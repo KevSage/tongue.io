@@ -8970,3 +8970,185 @@ FOREIGN KEY ("langauge_id")
   [1m[36mNation Load (1.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
   [1m[36mLanguage Load (0.4ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
   [1m[36mPhrase Load (0.5ms)[0m  [1m[34mSELECT "phrases".* FROM "phrases" ORDER BY "phrases"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/users" for ::1 at 2020-02-20 23:00:33 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 6.2ms | ActiveRecord: 1.0ms | Allocations: 8114)
+
+
+Started GET "/nations" for ::1 at 2020-02-20 23:00:38 -0500
+Processing by NationsController#index as HTML
+  [1m[36mNation Load (4.0ms)[0m  [1m[34mSELECT "nations".* FROM "nations"[0m
+  ↳ app/controllers/nations_controller.rb:8:in `index'
+Completed 200 OK in 99ms (Views: 88.2ms | ActiveRecord: 5.5ms | Allocations: 61854)
+
+
+Started GET "/users" for ::1 at 2020-02-21 09:57:38 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 6.8ms | ActiveRecord: 0.5ms | Allocations: 7049)
+
+
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mNation Load (1.0ms)[0m  [1m[34mSELECT "nations".* FROM "nations" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mNation Load (0.7ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."nation" = ? LIMIT ?[0m  [["nation", "Jamaica"], ["LIMIT", 11]]
+  [1m[36mNation Load (2.4ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."name" = ? LIMIT ?[0m  [["name", "Jamaica"], ["LIMIT", 11]]
+Started POST "/users" for ::1 at 2020-02-21 10:20:33 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"princeton", "email"=>"freshprince@gmail.com", "password"=>"[FILTERED]", "nation_id"=>"104", "avatar"=>"TBD"}}
+[31mUnpermitted parameter: :password[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mNation Load (1.3ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 104], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "freshprince@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 422 Unprocessable Entity in 190ms (Views: 1.2ms | ActiveRecord: 2.0ms | Allocations: 16052)
+
+
+Started POST "/users" for ::1 at 2020-02-21 10:21:08 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"princeton", "email"=>"freshprince@gmail.com", "password"=>"[FILTERED]", "nation_id"=>"104", "avatar"=>"TBD"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ (byebug):1:in `create'
+  [1m[36mNation Load (1.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 104], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "freshprince@gmail.com"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "nation_id", "avatar", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "princeton"], ["email", "freshprince@gmail.com"], ["password_digest", "$2a$12$K9GBtUzxExRdp4t1HJnfo.sp7cxWzHTSQO07cOFZ6uzC/.OGii8tq"], ["nation_id", 104], ["avatar", "TBD"], ["created_at", "2020-02-21 15:22:17.175152"], ["updated_at", "2020-02-21 15:22:17.175152"]]
+  ↳ (byebug):1:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ (byebug):1:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "freshprince@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 121303ms (Views: 0.7ms | ActiveRecord: 8.0ms | Allocations: 64821)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:23:18 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1130)
+
+
+  [1m[36mNation Load (1.4ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."name" = ? LIMIT ?[0m  [["name", "Liberia"], ["LIMIT", 11]]
+Started POST "/users" for ::1 at 2020-02-21 10:24:37 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"robtay", "email"=>"robtay@gmail.com", "password"=>"[FILTERED]", "nation_id"=>"117", "avatar"=>"TBD"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "robtay@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "nation_id", "avatar", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "robtay"], ["email", "robtay@gmail.com"], ["password_digest", "$2a$12$Yezo.FqCmyIFRpz7lv0rse.3/W7tNyQiVMNg9TtBOkOGjSIyIBkyq"], ["nation_id", 117], ["avatar", "TBD"], ["created_at", "2020-02-21 15:24:47.934426"], ["updated_at", "2020-02-21 15:24:47.934426"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 10546ms (Views: 0.6ms | ActiveRecord: 1.5ms | Allocations: 9034)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:24:51 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 10.0ms | ActiveRecord: 1.0ms | Allocations: 7741)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/users" for ::1 at 2020-02-21 10:26:18 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 1271)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:26:22 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1288)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:26:36 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1271)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:26:37 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1271)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:26:38 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1271)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:26:38 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 1271)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:26:38 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1271)
+
+
+Started GET "/users" for ::1 at 2020-02-21 10:26:39 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1271)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mNation Load (0.3ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "ksagedeveloper@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (3.5ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["password_digest", "1234567"], ["updated_at", "2020-02-21 15:30:52.111551"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users" for ::1 at 2020-02-21 10:31:00 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 1278)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "ksagedeveloper@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["password_digest", "$2a$12$1D6Vw8UaKAg/kefIyPzJWupGf0H/.HxFUWj1D7gSQ7OWyTyiE9P62"], ["updated_at", "2020-02-21 15:31:53.856358"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users" for ::1 at 2020-02-21 10:31:57 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1280)
+
+
