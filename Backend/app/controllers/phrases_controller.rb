@@ -1,6 +1,6 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, only: [:show, :update, :destroy]
-
+  # before_action :set_phrase, only: [:show, :update, :create, :destroy]
+ 
   # GET /phrases
   def index
     @phrases = Phrase.all
@@ -18,9 +18,11 @@ class PhrasesController < ApplicationController
     
 
     @phrase = Phrase.find_or_create_by(phrase_params)
-    byebug
+    
     if @phrase.save
-      render json: @phrase, status: :created, location: @phrase
+      translation = @phrase.translate
+      
+      render json: translation
     else
       render json: @phrase.errors, status: :unprocessable_entity
     end
@@ -48,6 +50,6 @@ class PhrasesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def phrase_params
-      params.require(:phrase).permit(:category, :input)
+      params.require(:phrase).permit(:category, :input, :target)
     end
 end

@@ -1,6 +1,7 @@
 class PhrasebooksController < ApplicationController
   before_action :set_phrasebook, only: [:show, :update, :destroy]
-
+  # before_action :authenticate_user 
+  
   # GET /phrasebooks
   def index
     @phrasebooks = Phrasebook.all
@@ -10,7 +11,7 @@ class PhrasebooksController < ApplicationController
 
   # GET /phrasebooks/1
   def show
-    render json: @phrasebook
+    render json: @phrasebook, :include => [:entries]
   end
 
   # POST /phrasebooks

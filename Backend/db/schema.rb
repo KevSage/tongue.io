@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_034442) do
+ActiveRecord::Schema.define(version: 2020_02_23_170016) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "phrasebook_id", null: false
@@ -55,11 +55,10 @@ ActiveRecord::Schema.define(version: 2020_02_21_034442) do
   create_table "phrasebooks", force: :cascade do |t|
     t.integer "language_id", null: false
     t.integer "average_score"
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["language_id"], name: "index_phrasebooks_on_language_id"
-    t.index ["user_id"], name: "index_phrasebooks_on_user_id"
   end
 
   create_table "phrases", force: :cascade do |t|
@@ -69,13 +68,13 @@ ActiveRecord::Schema.define(version: 2020_02_21_034442) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_phrasebooks", force: :cascade do |t|
-    t.integer "phrasebook_id", null: false
+  create_table "user_nations", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "nation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["phrasebook_id"], name: "index_user_phrasebooks_on_phrasebook_id"
-    t.index ["user_id"], name: "index_user_phrasebooks_on_user_id"
+    t.index ["nation_id"], name: "index_user_nations_on_nation_id"
+    t.index ["user_id"], name: "index_user_nations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,7 +92,6 @@ ActiveRecord::Schema.define(version: 2020_02_21_034442) do
   add_foreign_key "nation_langauages", "langauges"
   add_foreign_key "nation_langauages", "nations"
   add_foreign_key "phrasebooks", "languages"
-  add_foreign_key "phrasebooks", "users"
-  add_foreign_key "user_phrasebooks", "phrasebooks"
-  add_foreign_key "user_phrasebooks", "users"
+  add_foreign_key "user_nations", "nations"
+  add_foreign_key "user_nations", "users"
 end

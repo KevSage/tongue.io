@@ -18,10 +18,18 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
 
     if @entry.save
-      render json: @entry, status: :created, location: @entry
+      newEntry = @entry.translate
+      render json: newEntry, status: :created, location: @entry
     else
       render json: @entry.errors, status: :unprocessable_entity
     end
+  end
+# Remove translate from entries controller/model to phrase
+  def translate
+    @entry = Entry.new(entry_params)
+    translated_text = @entry.translate
+    render 
+
   end
 
   # PATCH/PUT /entries/1
