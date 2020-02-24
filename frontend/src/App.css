@@ -1,3 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
+
+/* Signup/Login */
+.loginHeader {
+  display: block;
+  font-size: 70px;
+  font-family: "Pacifico";
+  line-height: 3em;
+  text-align: center;
+  color: #ff686b;
+}
+
+.myFont {
+  font-family: "Pacifico";
+  font-size: 30px;
+  color: #ff686b;
+}
+
 .App {
   text-align: center;
 }

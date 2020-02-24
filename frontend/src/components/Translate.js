@@ -164,10 +164,11 @@ class Translate extends Component {
                 />
               </Button.Group>
               <Form.Input
+                as="div"
                 fluid
                 label={`Translation (${this.state.Phrasebook})`}
                 placeholder="Read only"
-                value={this.state.translation}
+                dangerouslySetInnerHTML={{ __html: this.state.translation }}
                 readOnly
               />
             </Form.Group>
