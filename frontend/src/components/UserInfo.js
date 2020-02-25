@@ -6,6 +6,7 @@ function UserInfo(props) {
   //   let entries = props.user.phrasebooks.forEach(book =>
   //     console.log(book.entries)
   //   );
+  
   return (
     <div>
       <Segment>

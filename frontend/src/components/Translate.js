@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Icon, Dropdown } from "semantic-ui-react";
-
+import {Animated} from 'react-animated-css'
 class Translate extends Component {
   state = {
     input: "",
@@ -140,39 +140,41 @@ class Translate extends Component {
                 onChange={this.onChange}
                 value={this.state.input}
               />
-              <Button.Group vertical labeled icon>
-                <Button
-                  basic
-                  color="green"
-                  icon="angle double right"
-                  content="Translate"
-                  onClick={this.translate}
-                />
-                <Button
-                  basic
-                  color="yellow"
-                  icon="angle double down"
-                  // disabled
-                  content="Save"
-                />
-                <Button
-                  icon="cancel"
-                  content="Clear"
-                  basic
-                  color="red"
-                  disabled
-                />
-              </Button.Group>
-              <Form.Input
-                as="div"
-                fluid
-                label={`Translation (${this.state.Phrasebook})`}
-                placeholder="Read only"
-                dangerouslySetInnerHTML={{ __html: this.state.translation }}
-                readOnly
-              />
             </Form.Group>
           </Form>
+          <div>{`Translation (${this.state.Phrasebook})`}</div>
+          <Animated
+            animationIn="bounceInLeft"
+            animationOut="fadeOut"
+            isVisible={true}
+          >
+            <div
+              fluid
+              dangerouslySetInnerHTML={{ __html: this.state.translation }}
+              className="translation-text"
+            ></div>
+          </Animated>
+
+          <br />
+          <br />
+
+          <Button.Group vertical labeled icon>
+            <Button
+              basic
+              color="green"
+              icon="angle double right"
+              content="Translate"
+              onClick={this.translate}
+            />
+            <Button
+              basic
+              color="yellow"
+              icon="angle double down"
+              // disabled
+              content="Save"
+            />
+            <Button icon="cancel" content="Clear" basic color="red" disabled />
+          </Button.Group>
         </div>
       </Container>
     );

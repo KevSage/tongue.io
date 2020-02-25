@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     render json: @user, :include => [:nation, :phrasebooks]
   end
 
+  def decode
+    @currentUser = User.find_by(id: current_user)
+   render json: @currentUser, :include => [:nation, :phrasebooks]
+  end
+
   # POST /users
   def create
     @user = User.new(user_params)
