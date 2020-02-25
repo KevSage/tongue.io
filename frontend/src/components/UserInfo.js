@@ -6,7 +6,7 @@ function UserInfo(props) {
   //   let entries = props.user.phrasebooks.forEach(book =>
   //     console.log(book.entries)
   //   );
-  
+  // debugger;
   return (
     <div>
       <Segment>
@@ -14,22 +14,25 @@ function UserInfo(props) {
           <Grid.Column>
             <Image src={props.user.nation.flag} size="small" avatar />
             <p>{props.user.user.username}</p>
+            <p>{props.user.nation.name}</p>
           </Grid.Column>
           <Grid.Column>
             <div>
-              <p>{props.user.phrasebooks ? props.user.phrasebooks.length : 0 }</p>
+              <p>
+                {props.user.phrasebooks ? props.user.phrasebooks.length : 0}
+              </p>
               <p>Phrasebook(s)</p>
             </div>
             <div>
-              <p>{props.user.entries ? props.user.phrasebooks.entries : 0 }</p>
-              <p>Translation(s)</p>
+              {/* <p>{props.user.entries ? props.user.entries.length : 0}</p>
+              <p>Translation(s)</p> */}
             </div>
           </Grid.Column>
         </Grid>
 
         <Divider vertical></Divider>
       </Segment>
-      <Translate user={props.user} />
+      {/* <Translate user={props.user} /> */}
     </div>
   );
 }

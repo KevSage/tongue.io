@@ -9,27 +9,27 @@ function Navbar() {
       </Menu.Item>
 
       <Menu.Item
-        name="features"
-        // active={activeItem === "features"}
+        name="Dashboard"
+        // active={activeItem === "dashboard"}
         // onClick={this.handleItemClick}
       >
-        Features
+        Dashboard
       </Menu.Item>
 
       <Menu.Item
-        name="testimonials"
+        name="countries"
         // active={activeItem === "testimonials"}
         // onClick={this.handleItemClick}
       >
-        Testimonials
+        Countries
       </Menu.Item>
 
       <Menu.Item
-        name="sign-in"
-        // active={activeItem === "sign-in"}
+        name="log0ut"
+        // active={activeItem === "log0ut"}
         // onClick={this.handleItemClick}
       >
-        Sign-in
+        Logout
       </Menu.Item>
     </Menu>
   );

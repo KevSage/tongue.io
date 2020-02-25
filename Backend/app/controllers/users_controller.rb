@@ -9,21 +9,30 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
-  def show
-    render json: @user, :include => [:nation, :phrasebooks]
+  def show 
+    render json: @user, :include => {
+      :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language]} }
   end
 
   def decode
     @currentUser = User.find_by(id: current_user)
-   render json: @currentUser, :include => [:nation, :phrasebooks]
+   render json: @currentUser, :include => {
+    :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language , :entries]}  }
   end
 
   # POST /users
   def create
-    @user = User.new(user_params)
     
+    nation = params[:user][:nation]
+    newNation = Nation.find_by(name: nation)
+    nation_id = newNation.id
+    @user = User.new(username: user_params[:username], email: user_params[:email], password: user_params[:password], nation_id: nation_id)
+    
+    
+
     if @user.save!
-      render json: @user, status: :created, location: @user
+
+      render json: @user, :include => [:phrasebooks], status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -51,6 +60,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username, :email, :password, :nation_id, :avatar)
+      params.require(:user).permit(:username, :email, :password, :nation)
     end
 end

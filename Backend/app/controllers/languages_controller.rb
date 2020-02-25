@@ -10,7 +10,7 @@ class LanguagesController < ApplicationController
 
   # GET /languages/1
   def show
-    render json: @language
+    render json: @language 
   end
 
   # POST /languages

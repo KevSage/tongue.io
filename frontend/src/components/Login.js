@@ -25,7 +25,6 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        debugger
         localStorage.setItem("token", data.token);
         this.props.history.push("/dashboard");
         console.log(localStorage);

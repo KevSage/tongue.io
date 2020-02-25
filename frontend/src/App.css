@@ -21,6 +21,10 @@
   padding: 20px;
 }
 
+.button {
+  color: #ff686b;
+}
+
 .App {
   text-align: center;
 }

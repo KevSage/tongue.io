@@ -11,7 +11,7 @@ class PhrasebooksController < ApplicationController
 
   # GET /phrasebooks/1
   def show
-    render json: @phrasebook, :include => [:entries]
+    render json: @phrasebook, :include => [:entries, :language]
   end
 
   # POST /phrasebooks
