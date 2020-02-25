@@ -17,11 +17,11 @@ function UserInfo(props) {
           </Grid.Column>
           <Grid.Column>
             <div>
-              <p>{props.user.phrasebooks.length}</p>
+              <p>{props.user.phrasebooks ? props.user.phrasebooks.length : 0 }</p>
               <p>Phrasebook(s)</p>
             </div>
             <div>
-              <p>{props.user.entries.length}</p>
+              <p>{props.user.entries ? props.user.phrasebooks.entries : 0 }</p>
               <p>Translation(s)</p>
             </div>
           </Grid.Column>
