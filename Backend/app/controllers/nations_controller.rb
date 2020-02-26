@@ -5,12 +5,12 @@ class NationsController < ApplicationController
   def index
     @nations = Nation.all
 
-    render json: @nations
+    render json: @nations, :include => [:language]
   end
 
   # GET /nations/1
   def show
-    render json: @nation
+    render json: @nation, :include => [:language]
   end
 
   # POST /nations

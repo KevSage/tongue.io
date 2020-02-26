@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -13,7 +14,7 @@ function Navbar() {
         // active={activeItem === "dashboard"}
         // onClick={this.handleItemClick}
       >
-        Dashboard
+        <Link to="/dashboard">Dashboard</Link>
       </Menu.Item>
 
       <Menu.Item
@@ -21,7 +22,7 @@ function Navbar() {
         // active={activeItem === "testimonials"}
         // onClick={this.handleItemClick}
       >
-        Countries
+        <Link to="/countries">Countries</Link>{" "}
       </Menu.Item>
 
       <Menu.Item

@@ -16,12 +16,14 @@ class PhrasesController < ApplicationController
   # POST /phrases
   def create
     
-
-    @phrase = Phrase.find_or_create_by(phrase_params)
+    input = params[:input]
+    @phrase = Phrase.find_or_create_by(input: input)
+    
     
     if @phrase.save
-      translation = @phrase.translate
       
+      translation = @phrase.translate(params[:target])
+      byebug
       render json: translation
     else
       render json: @phrase.errors, status: :unprocessable_entity

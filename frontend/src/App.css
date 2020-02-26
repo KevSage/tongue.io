@@ -22,11 +22,24 @@
 }
 .book_card {
   display: inline-block;
-  margin: 40px
+  margin: 20px;
+  width: 40% !important;
 }
 
 .button {
   color: #ff686b;
+}
+
+.add_book_container {
+  margin: auto !important;
+  width: 50% !important;
+}
+/* .main {
+  width: 50% !important;
+  margin: 0 !important;
+} */
+.add_book_btn {
+  margin: 30px !important;
 }
 
 .App {

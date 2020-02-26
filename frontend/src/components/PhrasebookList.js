@@ -13,13 +13,11 @@ const addBook = e => {
   console.log(e.target);
 };
 
-
-
 const languages = { Languages };
 const PhrasebookContainer = props => {
-  return ( props.user.phrasebooks.map(book => (
+  return props.user.phrasebooks.map(book => (
     <div className="book_card">
-      <Card >
+      <Card>
         <Card.Content>
           <Card.Header>{book.language.name}</Card.Header>
           {console.log(book.language.nations)}
@@ -27,8 +25,15 @@ const PhrasebookContainer = props => {
           <Card.Description>Phrases: {book.entries.length}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <div className="ui two buttons">
-            <Button basic color="green">
+          <div className={book.language.name}>
+            <Button
+              basic
+              color="green"
+              onClick={e => {
+                props.chooseDeck(e);
+              }}
+              value={book.language.name}
+            >
               Study
             </Button>
             <Button basic color="red">
@@ -53,6 +58,7 @@ const PhrasebookContainer = props => {
         </Container>
       </div> */}
     </div>
-  ))); };
+  ));
+};
 
 export default PhrasebookContainer;

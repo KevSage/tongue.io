@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Icon, Dropdown } from "semantic-ui-react";
-import {Animated} from 'react-animated-css'
+import { Animated } from "react-animated-css";
 class Translate extends Component {
   state = {
     input: "",
     translation: "",
     language: "",
     category: "",
-    Phrasebook: "French"
+    abbr: ""
+    // Phrasebook: "French"
   };
 
   onChange = e => {
@@ -21,7 +22,7 @@ class Translate extends Component {
     let phrase = {
       input: this.state.input,
       category: this.state.category,
-      target: "fr"
+      target: this.props.phrasebook.language.abbr
     };
 
     fetch("http://localhost:3000/phrases", {
@@ -54,6 +55,7 @@ class Translate extends Component {
     console.log(this.state);
   };
   render() {
+    console.log(this.props);
     const categories = [
       {
         key: "Food",
@@ -142,7 +144,11 @@ class Translate extends Component {
               />
             </Form.Group>
           </Form>
-          <div>{`Translation (${this.state.Phrasebook})`}</div>
+          <div>{`Translation (${
+            this.props.phrasebook.language
+              ? this.props.phrasebook.language.name
+              : "Choose a phrasebook"
+          })`}</div>
           <Animated
             animationIn="bounceInLeft"
             animationOut="fadeOut"

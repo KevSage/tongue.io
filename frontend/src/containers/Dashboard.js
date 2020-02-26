@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import UserInfo from "../components/UserInfo";
 import PhrasebookList from "../components/PhrasebookList";
-import { Container } from "semantic-ui-react";
+import { Container, Segment, Grid, Divider } from "semantic-ui-react";
 import AddBook from "../components/AddBook";
 import PhrasebookHeader from "../components/PhrasebookHeader";
+import Translate from "../components/Translate";
 class Dashboard extends Component {
   state = {
     user: {},
     nation: {},
     phrasebooks: [],
-    entries: []
+    entries: [],
+    activePhrasebook: ""
   };
 
   componentDidMount() {
@@ -37,24 +39,36 @@ class Dashboard extends Component {
   }
 
   addBook = e => {
-    let lang = document.querySelector('.book_language div').textContent
-    
+    let lang = document.querySelector(".book_language div").textContent;
+
     let newBook = {
       user_id: this.state.user.id,
       average_score: 0,
-      language : lang
-    }
+      language: lang
+    };
     console.log(newBook);
-    fetch('http://localhost:3000/phrasebooks', {
-      method: 'post',
+    fetch("http://localhost:3000/phrasebooks", {
+      method: "post",
       body: JSON.stringify(newBook),
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       }
     })
-    .then(res => res.json)
-    .then(console.log)
+      .then(res => res.json)
+      .then(console.log);
+  };
+
+  chooseDeck = e => {
+    console.log(e.target.value);
+    let obj = this.state.phrasebooks.find(
+      book => book.language.name === e.target.value
+    );
+    console.log(obj);
+
+    this.setState({
+      activePhrasebook: obj
+    });
   };
   render() {
     console.log(this.state);
@@ -62,12 +76,27 @@ class Dashboard extends Component {
       <div>
         <Navbar />
         <UserInfo user={this.state} />
-        <Container>
-          <PhrasebookHeader/>
-          <PhrasebookList user={this.state} addBook={this.addBook} />
-          <AddBook user={this.state} addBook={this.addBook} />
+        <Segment>
+          <Grid columns={2} relaxed="very">
+            <Grid.Column>
+              <Container className="main">
+                <PhrasebookHeader />
+                <AddBook user={this.state} addBook={this.addBook} />
 
-        </Container>
+                <PhrasebookList
+                  user={this.state}
+                  addBook={this.addBook}
+                  chooseDeck={this.chooseDeck}
+                />
+              </Container>
+            </Grid.Column>
+            <Grid.Column>
+              <Translate phrasebook={this.state.activePhrasebook} />
+            </Grid.Column>
+          </Grid>
+
+          <Divider vertical>Translate</Divider>
+        </Segment>
       </div>
     );
   }
