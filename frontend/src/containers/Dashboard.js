@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import UserInfo from "../components/UserInfo";
 import PhrasebookList from "../components/PhrasebookList";
 import { Container } from "semantic-ui-react";
+import AddBook from "../components/AddBook";
+import PhrasebookHeader from "../components/PhrasebookHeader";
 class Dashboard extends Component {
   state = {
     user: {},
@@ -33,6 +35,27 @@ class Dashboard extends Component {
         });
     }
   }
+
+  addBook = e => {
+    let lang = document.querySelector('.book_language div').textContent
+    
+    let newBook = {
+      user_id: this.state.user.id,
+      average_score: 0,
+      language : lang
+    }
+    console.log(newBook);
+    fetch('http://localhost:3000/phrasebooks', {
+      method: 'post',
+      body: JSON.stringify(newBook),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+    .then(res => res.json)
+    .then(console.log)
+  };
   render() {
     console.log(this.state);
     return (
@@ -40,7 +63,10 @@ class Dashboard extends Component {
         <Navbar />
         <UserInfo user={this.state} />
         <Container>
-          <PhrasebookList user={this.state} />
+          <PhrasebookHeader/>
+          <PhrasebookList user={this.state} addBook={this.addBook} />
+          <AddBook user={this.state} addBook={this.addBook} />
+
         </Container>
       </div>
     );

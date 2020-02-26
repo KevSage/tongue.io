@@ -12,7 +12,7 @@ class Signup extends Component {
 
   handleFormInput = event => {
     let nation = document.querySelector(".country");
-    nation = nation.querySelector("div").innerHTML;
+    nation = nation.querySelector("div").textContent;
     console.log(nation);
     this.setState({
       [event.target.name]: event.target.value,

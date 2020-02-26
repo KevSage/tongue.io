@@ -13,22 +13,13 @@ const addBook = e => {
   console.log(e.target);
 };
 
-const handleSelection = e => {
-  console.log(e.target);
-};
+
 
 const languages = { Languages };
-const PhrasebookContainer = props =>
-  props.user.phrasebooks.map(book => (
-    <div>
-      <Header as="h2" icon>
-        <Icon name="language" color="violet" />
-        My Phrasebooks
-        <Header.Subheader>
-          Study phrasebooks or add to your collection.
-        </Header.Subheader>
-      </Header>
-      <Card>
+const PhrasebookContainer = props => {
+  return ( props.user.phrasebooks.map(book => (
+    <div className="book_card">
+      <Card >
         <Card.Content>
           <Card.Header>{book.language.name}</Card.Header>
           {console.log(book.language.nations)}
@@ -47,20 +38,21 @@ const PhrasebookContainer = props =>
         </Card.Content>
       </Card>
 
-      <div>
+      {/* <div>
         <Container>
           <Dropdown
             placeholder="Select a Language"
             options={Languages}
             fluid
             selection
+            className="book_language"
             // onChange={handleSelection}
           />
 
-          <Button color="red">Add Book</Button>
+          <Button color="red" onClick={(e) => {props.addBook(e)}}>Add Book</Button>
         </Container>
-      </div>
+      </div> */}
     </div>
-  ));
+  ))); };
 
 export default PhrasebookContainer;

@@ -16,7 +16,12 @@ class PhrasebooksController < ApplicationController
 
   # POST /phrasebooks
   def create
-    @phrasebook = Phrasebook.new(phrasebook_params)
+
+    language = params[:language]
+    newLang = Language.find_by(name: language)
+    
+    language_id = newLang.id
+    @phrasebook = Phrasebook.new(user_id: phrasebook_params[:user_id], average_score: phrasebook_params[:average_score], language_id: language_id)
 
     if @phrasebook.save
       render json: @phrasebook, status: :created, location: @phrasebook
@@ -47,6 +52,6 @@ class PhrasebooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def phrasebook_params
-      params.require(:phrasebook).permit(:language_id, :average_score, :user_id)
+      params.require(:phrasebook).permit(:language, :average_score, :user_id)
     end
 end

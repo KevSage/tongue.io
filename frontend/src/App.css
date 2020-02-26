@@ -20,6 +20,10 @@
   font-size: 2em;
   padding: 20px;
 }
+.book_card {
+  display: inline-block;
+  margin: 40px
+}
 
 .button {
   color: #ff686b;

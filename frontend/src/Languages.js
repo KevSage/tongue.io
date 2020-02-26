@@ -10,7 +10,7 @@ export default [
   { key: "Bulgarian", value: "BG", text: "Bulgarian" },
   { key: "Catalan", value: "CA", text: "Catalan" },
   { key: "Cambodian", value: "KM", text: "Cambodian" },
-  { key: "Chinese (Mandarin)", value: "ZH", text: "Chinese (Mandarin)" },
+  { key: "Chinese Simplified", value: "ZH", text: "Chinese Simplified" },
   { key: "Croatian", value: "HR", text: "Croatian" },
   { key: "Czech", value: "CS", text: "Czech" },
   { key: "Danish", value: "DA", text: "Danish" },
