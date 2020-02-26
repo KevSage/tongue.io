@@ -21994,3 +21994,625 @@ Processing by UsersController#decode as */*
 Completed 200 OK in 75ms (Views: 42.9ms | ActiveRecord: 17.3ms | Allocations: 5064)
 
 
+Started GET "/login" for ::1 at 2020-02-25 15:40:15 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (2.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.4ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (1.9ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.9ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 61ms (Views: 43.2ms | ActiveRecord: 6.5ms | Allocations: 5162)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:40:26 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 18ms (Views: 11.9ms | ActiveRecord: 0.8ms | Allocations: 5064)
+
+
+Started POST "/login" for ::1 at 2020-02-25 15:40:49 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ksagedeveloper@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 209ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1074)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:40:49 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 0.6ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:42:15 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 18ms (Views: 14.5ms | ActiveRecord: 1.5ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:43:13 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.4ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 1.0ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:49:34 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.5ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.5ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.6ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.7ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 32ms (Views: 20.0ms | ActiveRecord: 2.9ms | Allocations: 5162)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:51:18 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.4ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.5ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 57ms (Views: 32.1ms | ActiveRecord: 2.7ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:54:52 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.5ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 74ms (Views: 51.2ms | ActiveRecord: 5.4ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 15:56:47 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (3.7ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 18ms (Views: 12.6ms | ActiveRecord: 4.2ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:00:38 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.3ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 64ms (Views: 46.5ms | ActiveRecord: 2.7ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:02:59 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 0.7ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:03:42 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.3ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 36ms (Views: 29.7ms | ActiveRecord: 0.9ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:03:46 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 15ms (Views: 11.5ms | ActiveRecord: 0.7ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:08:51 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 22ms (Views: 17.0ms | ActiveRecord: 0.8ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:09:24 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (109.7ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 133ms (Views: 15.6ms | ActiveRecord: 110.3ms | Allocations: 5066)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:20:23 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.5ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.7ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.4ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.8ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 37ms (Views: 26.1ms | ActiveRecord: 2.9ms | Allocations: 5162)
+
+
+Started POST "/login" for ::1 at 2020-02-25 16:22:38 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ksagedeveloper@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 197ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 954)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:22:38 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.9ms | Allocations: 5064)
+
+
+Started POST "/login" for ::1 at 2020-02-25 16:24:09 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ksagedeveloper@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 200ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 933)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:24:09 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.3ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.9ms | Allocations: 5064)
+
+
+Started POST "/login" for ::1 at 2020-02-25 16:26:54 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ksagedeveloper@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 203ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 933)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:26:55 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 1.1ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:30:44 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.3ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 32ms (Views: 25.9ms | ActiveRecord: 1.2ms | Allocations: 5065)
+
+
+Started POST "/login" for ::1 at 2020-02-25 16:31:08 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"ksagedeveloper@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ksagedeveloper@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 204ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 934)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:31:08 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.8ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:34:52 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.3ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 34ms (Views: 22.0ms | ActiveRecord: 1.7ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:34:54 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 20ms (Views: 18.2ms | ActiveRecord: 0.7ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:37:08 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 19ms (Views: 16.3ms | ActiveRecord: 0.8ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:40:10 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.3ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 65ms (Views: 42.9ms | ActiveRecord: 5.6ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:40:52 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 0.8ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:42:43 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.3ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.3ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 17ms (Views: 12.5ms | ActiveRecord: 1.2ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:43:47 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 21ms (Views: 17.5ms | ActiveRecord: 0.9ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:47:39 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 53ms (Views: 35.9ms | ActiveRecord: 0.9ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:48:38 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.2ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 103ms (Views: 100.2ms | ActiveRecord: 0.9ms | Allocations: 5067)
+
+
+Started GET "/login" for ::1 at 2020-02-25 16:57:18 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.7ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.5ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (4.0ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (4.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 60ms (Views: 38.1ms | ActiveRecord: 10.1ms | Allocations: 5162)
+
+
+Started GET "/login" for ::1 at 2020-02-25 17:04:57 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.5ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (1.4ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.4ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.6ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 61ms (Views: 40.9ms | ActiveRecord: 3.8ms | Allocations: 5162)
+
+
+Started GET "/login" for ::1 at 2020-02-25 17:08:15 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.3ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.2ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.2ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 53ms (Views: 31.8ms | ActiveRecord: 2.1ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 17:08:16 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 12ms (Views: 9.0ms | ActiveRecord: 0.5ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 17:11:23 -0500
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.1ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.1ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.1ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 10ms (Views: 7.3ms | ActiveRecord: 0.6ms | Allocations: 5064)
+
+
+Started GET "/login" for ::1 at 2020-02-25 17:22:41 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#decode as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `decode'
+  [1m[36mNation Load (0.5ms)[0m  [1m[34mSELECT "nations".* FROM "nations" WHERE "nations"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mPhrasebook Load (0.5ms)[0m  [1m[34mSELECT "phrasebooks".* FROM "phrasebooks" WHERE "phrasebooks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mLanguage Load (0.5ms)[0m  [1m[34mSELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+  [1m[36mEntry Load (0.9ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."phrasebook_id" = ?[0m  [["phrasebook_id", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `decode'
+Completed 200 OK in 32ms (Views: 20.0ms | ActiveRecord: 3.4ms | Allocations: 5162)
+
+

@@ -1,15 +1,24 @@
 import React from "react";
-import { Card, Icon, Button, Header, Container } from "semantic-ui-react";
-import Languages from 'languages-js'
-import Select from "react-select";
-
-const languages = [];
+import {
+  Card,
+  Icon,
+  Button,
+  Header,
+  Container,
+  Dropdown
+} from "semantic-ui-react";
+import Languages from "../Languages";
 
 const addBook = e => {
   console.log(e.target);
 };
 
-const CardExampleCardProps = props =>
+const handleSelection = e => {
+  console.log(e.target);
+};
+
+const languages = { Languages };
+const PhrasebookContainer = props =>
   props.user.phrasebooks.map(book => (
     <div>
       <Header as="h2" icon>
@@ -39,12 +48,19 @@ const CardExampleCardProps = props =>
       </Card>
 
       <div>
-          <Container>
-      
-        <Button color="red">Add Book</Button>
+        <Container>
+          <Dropdown
+            placeholder="Select a Language"
+            options={Languages}
+            fluid
+            selection
+            // onChange={handleSelection}
+          />
+
+          <Button color="red">Add Book</Button>
         </Container>
       </div>
     </div>
   ));
 
-export default CardExampleCardProps;
+export default PhrasebookContainer;
