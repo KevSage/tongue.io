@@ -23,7 +23,6 @@ class PhrasesController < ApplicationController
     if @phrase.save
       
       translation = @phrase.translate(params[:target])
-      byebug
       render json: translation
     else
       render json: @phrase.errors, status: :unprocessable_entity

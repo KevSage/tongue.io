@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Container, Icon, Dropdown } from "semantic-ui-react";
+import { Form, Button, Container, Dropdown } from "semantic-ui-react";
 import { Animated } from "react-animated-css";
 class Translate extends Component {
   state = {
@@ -7,8 +7,8 @@ class Translate extends Component {
     translation: "",
     language: "",
     category: "",
-    abbr: ""
-    // Phrasebook: "French"
+    abbr: "",
+    phrase_id: ""
   };
 
   onChange = e => {
@@ -54,6 +54,8 @@ class Translate extends Component {
     });
     console.log(this.state);
   };
+
+  createEntry = e => {};
   render() {
     console.log(this.props);
     const categories = [
@@ -182,6 +184,7 @@ class Translate extends Component {
             <Button icon="cancel" content="Clear" basic color="red" disabled />
           </Button.Group>
         </div>
+        <div></div>
       </Container>
     );
   }

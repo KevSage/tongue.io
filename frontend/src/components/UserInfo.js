@@ -1,6 +1,5 @@
 import React from "react";
 import { Divider, Grid, Image, Segment } from "semantic-ui-react";
-import Translate from "../components/Translate";
 
 function UserInfo(props) {
   //   let entries = props.user.phrasebooks.forEach(book =>

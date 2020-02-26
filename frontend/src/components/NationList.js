@@ -1,9 +1,18 @@
 import React, { Component } from "react";
-import { Button, Card, Image, Container } from "semantic-ui-react";
+import {
+  Button,
+  Card,
+  Image,
+  Container,
+  Search,
+  Icon,
+  Header
+} from "semantic-ui-react";
 import Navbar from "../components/Navbar";
 class NationList extends Component {
   state = {
-    nations: []
+    nations: [],
+    search: ""
   };
 
   componentDidMount() {
@@ -20,11 +29,19 @@ class NationList extends Component {
     return (
       <div>
         <Navbar />
+        <Container className="country-container">
+          <Header as="h2" icon>
+            <Icon name="globe" color="violet" />
+            Country/Language Database{" "}
+            <Header.Subheader>
+              Find the language of your next destination{" "}
+            </Header.Subheader>
+          </Header>
+          <Search className="country-search" />
 
-        <Container>
           <Card.Group>
             {this.state.nations.map(nation => (
-              <Card>
+              <Card className="country-card">
                 <Card.Content>
                   <Image floated="right" size="tiny" src={nation.flag} />
                   <Card.Header>{nation.name}</Card.Header>

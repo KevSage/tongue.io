@@ -91,7 +91,10 @@ class Dashboard extends Component {
               </Container>
             </Grid.Column>
             <Grid.Column>
-              <Translate phrasebook={this.state.activePhrasebook} />
+              <Translate
+                phrasebook={this.state.activePhrasebook}
+                entries={this.state.phrasebooks}
+              />
             </Grid.Column>
           </Grid>
 

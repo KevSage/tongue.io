@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1
   def show
-    render json: @entry
+    render json: @entry, :include => [:phrase]
   end
 
   # POST /entries

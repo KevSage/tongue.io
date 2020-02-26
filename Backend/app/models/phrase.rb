@@ -7,7 +7,6 @@ class Phrase < ApplicationRecord
     include HTTParty
 
     def translate(target)
-      byebug
         api = ENV['API']
         url = 'https://translation.googleapis.com/language/translate/v2?key='
         input = self.input
