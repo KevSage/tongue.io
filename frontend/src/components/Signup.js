@@ -52,33 +52,6 @@ class Signup extends Component {
       });
 
     console.log(this.state);
-
-    // if (this.state.password !== this.state.confirmation) {
-    //   alert("Passwords must match");
-    // } else {
-    //   this.setState({
-    //     [event.target.name]: event.target.value
-    //   });
-    //   let newUser = {
-    //     user: {
-    //       name: this.state.name,
-    //       password: this.state.password
-    //     }
-    //   };
-    //   debugger;
-    //   fetch("http://localhost:3000//api/v1/users", {
-    //     method: "POST",
-    //     body: JSON.stringify(newUser),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/json"
-    //     }
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       this.props.history.push("/login");
-    //     });
-    // }
   };
 
   render() {

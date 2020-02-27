@@ -6,6 +6,8 @@ import { Container, Segment, Grid, Divider } from "semantic-ui-react";
 import AddBook from "../components/AddBook";
 import PhrasebookHeader from "../components/PhrasebookHeader";
 import Translate from "../components/Translate";
+import { connect } from "react-redux";
+
 class Dashboard extends Component {
   state = {
     user: {},
@@ -104,4 +106,12 @@ class Dashboard extends Component {
     );
   }
 }
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return { setUser: user => dispatch({ type: "SET_USER", value: user }) };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Container } from "semantic-ui-react";
-
+import { connect } from "react-redux";
 class Login extends Component {
   state = {
     email: "",
@@ -25,9 +25,10 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        this.props.setUser(data);
         localStorage.setItem("token", data.token);
+
         this.props.history.push("/dashboard");
-        console.log(localStorage);
       });
   };
 
@@ -63,4 +64,22 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+
+//Defining props
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setUser: data =>
+      dispatch({
+        type: "SET_USER",
+        data: data
+      })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
