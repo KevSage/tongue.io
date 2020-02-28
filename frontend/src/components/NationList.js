@@ -6,7 +6,8 @@ import {
   Container,
   Search,
   Icon,
-  Header
+  Header,
+  Modal
 } from "semantic-ui-react";
 import Navbar from "../components/Navbar";
 class NationList extends Component {
@@ -24,6 +25,19 @@ class NationList extends Component {
         })
       );
   }
+  filterNotes = () => {
+    let newFilter = [...this.state.nations];
+    return newFilter.filter(nation => {
+      return nation.name.toLowerCase().includes(this.state.search);
+    });
+  };
+
+  handleSearch = event => {
+    this.setState({
+      search: event.target.value.toLowerCase()
+    });
+    console.log(this.state.search);
+  };
   render() {
     console.log(this.state.nations);
     return (
@@ -37,7 +51,10 @@ class NationList extends Component {
               Find the language of your next destination{" "}
             </Header.Subheader>
           </Header>
-          <Search className="country-search" />
+          <Search
+            className="country-search"
+            onChange={event => this.handleSearch(event)}
+          />
 
           <Card.Group>
             {this.state.nations.map(nation => (
@@ -53,9 +70,32 @@ class NationList extends Component {
                 </Card.Content>
                 <Card.Content extra>
                   <div className="ui two buttons">
-                    <Button basic color="green">
-                      See More
-                    </Button>
+                    <Modal
+                      trigger={
+                        <Button basic color="green">
+                          Learn More
+                        </Button>
+                      }
+                    >
+                      {" "}
+                      <Modal.Header>
+                        {nation.name}, ({nation.region})
+                      </Modal.Header>
+                      <Modal.Content image>
+                        <Image wrapped size="medium" src={nation.flag} />
+                        <Modal.Description>
+                          <Header>{nation.name}</Header>
+                          <p>Region: {nation.region}</p>
+                          <p>Capital City: {nation.capital}</p>
+                          <p>Population: {nation.population}</p>
+                          <p>Language: {nation.language.name}</p>
+                          <p>
+                            Currency: {nation.currency_symbol}
+                            {nation.currency_code} ({nation.currency})
+                          </p>
+                        </Modal.Description>
+                      </Modal.Content>
+                    </Modal>
                   </div>
                 </Card.Content>
               </Card>
