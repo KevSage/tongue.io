@@ -11,9 +11,6 @@ class Signup extends Component {
   };
 
   handleFormInput = event => {
-    // console.log(event.target.value);
-    // console.log(event.target.value);
-    // console.log(event.target.textContent);
     if (event.target.name) {
       this.setState({
         [event.target.name]: event.target.value
@@ -40,19 +37,18 @@ class Signup extends Component {
       }
     };
 
-    // fetch("http://localhost:3000/users", {
-    //   method: "post",
-    //   body: JSON.stringify(newUser),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json"
-    //   }
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     debugger;
-    //     this.props.history.push("/login");
-    //   });
+    fetch("http://localhost:3000/users", {
+      method: "post",
+      body: JSON.stringify(newUser),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.props.history.push("/login");
+      });
 
     console.log(newUser);
   };

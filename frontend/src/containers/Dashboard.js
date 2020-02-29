@@ -55,8 +55,13 @@ class Dashboard extends Component {
         Accept: "application/json"
       }
     })
-      .then(res => res.json)
-      .then(console.log);
+      .then(res => res.json())
+      .then(book => {
+        let newBookList = [...this.state.phrasebooks, book];
+        this.setState({
+          phrasebooks: newBookList
+        });
+      });
   };
 
   chooseDeck = e => {
@@ -87,6 +92,7 @@ class Dashboard extends Component {
                   user={this.state}
                   addBook={this.addBook}
                   chooseDeck={this.chooseDeck}
+                  phrasebooks={this.state.phrasebooks}
                 />
               </Container>
             </Grid.Column>

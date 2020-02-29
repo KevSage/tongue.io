@@ -24,7 +24,7 @@ class PhrasebooksController < ApplicationController
     @phrasebook = Phrasebook.new(user_id: phrasebook_params[:user_id], average_score: phrasebook_params[:average_score], language_id: language_id)
 
     if @phrasebook.save
-      render json: @phrasebook, status: :created, location: @phrasebook
+      render json: @phrasebook, :include => [:entries, :language], status: :created, location: @phrasebook
     else
       render json: @phrasebook.errors, status: :unprocessable_entity
     end

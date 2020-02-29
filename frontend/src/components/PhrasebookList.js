@@ -15,7 +15,8 @@ const addBook = e => {
 
 const languages = { Languages };
 const PhrasebookContainer = props => {
-  return props.user.phrasebooks.map(book => (
+  debugger;
+  return props.phrasebooks.map(book => (
     <div className="book_card">
       <Card>
         <Card.Content>
