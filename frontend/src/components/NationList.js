@@ -13,7 +13,8 @@ import Navbar from "../components/Navbar";
 class NationList extends Component {
   state = {
     nations: [],
-    search: ""
+    search: "",
+    results: []
   };
 
   componentDidMount() {
@@ -25,21 +26,22 @@ class NationList extends Component {
         })
       );
   }
-  filterNotes = () => {
+  filterNations = () => {
     let newFilter = [...this.state.nations];
-    return newFilter.filter(nation => {
-      return nation.name.toLowerCase().includes(this.state.search);
-    });
+    return newFilter.filter(nation =>
+      nation.name.toLowerCase().includes(this.state.search.toLowerCase())
+    );
   };
 
-  handleSearch = event => {
-    this.setState({
-      search: event.target.value.toLowerCase()
-    });
-    console.log(this.state.search);
+  handleSearch = searchterm => {
+    this.setState(
+      {
+        search: searchterm.value.toLowerCase()
+      },
+      () => console.log(this.state.search)
+    );
   };
   render() {
-    console.log(this.state.nations);
     return (
       <div>
         <Navbar />
@@ -53,11 +55,11 @@ class NationList extends Component {
           </Header>
           <Search
             className="country-search"
-            onChange={event => this.handleSearch(event)}
+            onSearchChange={(event, value) => this.handleSearch(value)}
           />
 
           <Card.Group>
-            {this.state.nations.map(nation => (
+            {this.filterNations().map(nation => (
               <Card className="country-card">
                 <Card.Content>
                   <Image floated="right" size="tiny" src={nation.flag} />

@@ -10,6 +10,13 @@
   color: #ff686b;
 }
 
+.signin {
+  width: 40% !important;
+}
+
+.signup {
+  background-color: azure;
+}
 .myFont {
   font-family: "Pacifico";
   font-size: 30px;

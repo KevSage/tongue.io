@@ -11,22 +11,25 @@ class Signup extends Component {
   };
 
   handleFormInput = event => {
-    let nation = document.querySelector(".country");
-    nation = nation.querySelector("div").textContent;
-    console.log(nation);
-    this.setState({
-      [event.target.name]: event.target.value,
-      nation: nation
-    });
+    // console.log(event.target.value);
+    // console.log(event.target.value);
+    // console.log(event.target.textContent);
+    if (event.target.name) {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    } else {
+      console.log(event.target);
+      console.log(event.target.children[1].textContent);
+      this.setState({
+        nation: event.target.children[1].textContent
+      });
+    }
     console.log(this.state);
   };
 
   createUser = event => {
     event.preventDefault();
-
-    this.setState({
-      [event.target.name]: event.target.value
-    });
 
     let newUser = {
       user: {
@@ -37,48 +40,21 @@ class Signup extends Component {
       }
     };
 
-    fetch("http://localhost:3000/users", {
-      method: "post",
-      body: JSON.stringify(newUser),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        debugger;
-        this.props.history.push("/login");
-      });
-
-    console.log(this.state);
-
-    // if (this.state.password !== this.state.confirmation) {
-    //   alert("Passwords must match");
-    // } else {
-    //   this.setState({
-    //     [event.target.name]: event.target.value
+    // fetch("http://localhost:3000/users", {
+    //   method: "post",
+    //   body: JSON.stringify(newUser),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json"
+    //   }
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     debugger;
+    //     this.props.history.push("/login");
     //   });
-    //   let newUser = {
-    //     user: {
-    //       name: this.state.name,
-    //       password: this.state.password
-    //     }
-    //   };
-    //   debugger;
-    //   fetch("http://localhost:3000//api/v1/users", {
-    //     method: "POST",
-    //     body: JSON.stringify(newUser),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/json"
-    //     }
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       this.props.history.push("/login");
-    //     });
-    // }
+
+    console.log(newUser);
   };
 
   render() {
@@ -117,15 +93,15 @@ class Signup extends Component {
             <Form.Field>
               <label htmlFor="country">Country</label>
               <Dropdown
-                name="country"
-                onChange={this.updateCountry}
+                name="nation"
+                // onChange={this.updateCountry}
                 onChange={this.handleFormInput}
                 options={COUNTRY_OPTIONS}
                 search
                 selection
                 selectOnBlur={false}
-                value={this.state.country}
-                className="country"
+                // value={this.state.nation}
+                // className="country"
               />
             </Form.Field>
 
