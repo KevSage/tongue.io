@@ -46,7 +46,6 @@ class Dashboard extends Component {
       average_score: 0,
       language: lang
     };
-    console.log(newBook);
     fetch("http://localhost:3000/phrasebooks", {
       method: "post",
       body: JSON.stringify(newBook),
@@ -60,6 +59,22 @@ class Dashboard extends Component {
         let newBookList = [...this.state.phrasebooks, book];
         this.setState({
           phrasebooks: newBookList
+        });
+      });
+  };
+  deleteBook = e => {
+    let bookId = e.target.value;
+    fetch("http://localhost:3000/phrasebooks/" + bookId, {
+      method: "DELETE"
+    })
+      .then(res => res.text())
+      .then(data => {
+        console.log(bookId);
+        console.log(this.state.phrasebooks);
+        let newArray = this.state.phrasebooks;
+        let newestArr = newArray.filter(book => book.id !== parseInt(bookId));
+        this.setState({
+          phrasebooks: newestArr
         });
       });
   };
@@ -93,6 +108,7 @@ class Dashboard extends Component {
                   addBook={this.addBook}
                   chooseDeck={this.chooseDeck}
                   phrasebooks={this.state.phrasebooks}
+                  deleteBook={this.deleteBook}
                 />
               </Container>
             </Grid.Column>

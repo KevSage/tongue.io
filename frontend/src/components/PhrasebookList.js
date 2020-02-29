@@ -10,12 +10,11 @@ import {
 import Languages from "../Languages";
 
 const addBook = e => {
-  console.log(e.target);
+  console.log(e.target.value);
 };
 
 const languages = { Languages };
 const PhrasebookContainer = props => {
-  debugger;
   return props.phrasebooks.map(book => (
     <div className="book_card">
       <Card>
@@ -37,7 +36,14 @@ const PhrasebookContainer = props => {
             >
               Study
             </Button>
-            <Button basic color="red">
+            <Button
+              basic
+              color="red"
+              onClick={e => {
+                props.deleteBook(e);
+              }}
+              value={book.id}
+            >
               Delete
             </Button>
           </div>
