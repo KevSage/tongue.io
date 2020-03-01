@@ -10,7 +10,7 @@ class NationLangauagesController < ApplicationController
 
   # GET /nation_langauages/1
   def show
-    render json: @nation_langauage
+    render json: @nation_langauage, :include => {:nations}
   end
 
   # POST /nation_langauages

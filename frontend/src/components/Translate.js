@@ -60,7 +60,28 @@ class Translate extends Component {
     console.log(this.state);
   };
 
-  createEntry = e => {};
+  createEntry = e => {
+    let newEntry = {
+      phrasebook_id: this.props.phrasebook.id,
+      phrase_id: this.state.activePhrase.id
+    };
+
+    console.log(newEntry);
+    // fetch("http://localhost:3000/entries", {
+    //   method: "post",
+    //   body: JSON.stringify(newUser),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json"
+    //   }
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({
+    //       entries: [...this.state.entries, data]
+    //     });
+    //   });
+  };
   render() {
     const categories = [
       {
@@ -125,6 +146,7 @@ class Translate extends Component {
         // image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
       }
     ];
+    let phrase_id = this.state.activePhrase.id;
     return (
       <Container>
         <div>
@@ -180,6 +202,8 @@ class Translate extends Component {
               icon="angle double down"
               // disabled
               content="Save"
+              value={phrase_id}
+              onClick={data => this.props.createEntry(phrase_id)}
             />
             <Button icon="cancel" content="Clear" basic color="red" disabled />
           </Button.Group>

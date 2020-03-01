@@ -37,6 +37,8 @@ class PhrasesController < ApplicationController
     end
   end
 
+  
+
   # PATCH/PUT /phrases/1
   def update
     if @phrase.update(phrase_params)

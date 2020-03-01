@@ -27,7 +27,7 @@ function UserInfo(props) {
               <p>Phrasebook(s)</p>
             </div>
             <div>
-              <p>{props.user.entries ? props.user.entries.length : 0}</p>
+              <p>{props.entries ? props.entries.length : 0}</p>
               <p>Translation(s)</p>
             </div>
           </Grid.Column>

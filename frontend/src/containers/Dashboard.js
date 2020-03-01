@@ -29,8 +29,12 @@ class Dashboard extends Component {
         .then(data => {
           let books = [];
           let entries = [];
-          data.phrasebooks.map(book => books.push(book));
-          books.map(entry => entries.push(entry));
+
+          data.phrasebooks.map(book => {
+            book.entries.map(entry => {
+              entries.push(entry);
+            });
+          });
           console.log(entries);
           this.setState({
             user: data,
@@ -94,11 +98,43 @@ class Dashboard extends Component {
       activePhrasebook: obj
     });
   };
+
+  createEntry = entry => {
+    console.log(entry);
+    let newEntry = {
+      phrasebook_id: this.state.activePhrasebook.id,
+      phrase_id: entry
+    };
+
+    fetch("http://localhost:3000/entries", {
+      method: "Post",
+      body: JSON.stringify(newEntry),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        debugger;
+        let newEntries = [...this.state.entries, data];
+        let newUser = { ...this.state.user.entries, data };
+        console.log(newUser);
+        this.setState({
+          entries: newEntries
+        });
+      });
+  };
   render() {
+    console.log(this.state.phrasebooks);
     return (
       <div>
         <Navbar />
-        <UserInfo user={this.state} />
+        <UserInfo
+          user={this.state}
+          entries={this.state.entries}
+          phrasebooks={this.state.phrasebooks}
+        />
         <Segment>
           <Grid columns={2} relaxed="very">
             <Grid.Column>
@@ -119,6 +155,7 @@ class Dashboard extends Component {
               <Translate
                 phrasebook={this.state.activePhrasebook}
                 entries={this.state.entries}
+                createEntry={this.createEntry}
               />
             </Grid.Column>
           </Grid>

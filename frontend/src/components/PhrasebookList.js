@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button } from "semantic-ui-react";
 
 const PhrasebookContainer = props => {
+  console.log(props.phrasebooks[0]);
   return props.phrasebooks.map(book => (
     <div className="book_card">
       <Card>
