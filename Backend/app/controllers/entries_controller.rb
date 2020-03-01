@@ -18,8 +18,8 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
 
     if @entry.save
-      newEntry = @entry.translate
-      render json: newEntry, status: :created, location: @entry
+      # newEntry = @entry.translate
+      render json: @entry, status: :created, location: @entry
     else
       render json: @entry.errors, status: :unprocessable_entity
     end

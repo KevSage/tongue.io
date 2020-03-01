@@ -13,7 +13,8 @@ class Dashboard extends Component {
     phrasebooks: [],
     entries: [],
     activePhrasebook: "",
-    activePhrase: ""
+    activePhrase: "",
+    phrases: []
   };
 
   componentDidMount() {
@@ -29,10 +30,16 @@ class Dashboard extends Component {
         .then(data => {
           let books = [];
           let entries = [];
+          let phrases = [];
 
           data.phrasebooks.map(book => {
             book.entries.map(entry => {
               entries.push(entry);
+            });
+          });
+          data.phrasebooks.map(book => {
+            book.phrases.map(phrase => {
+              phrases.push(phrase);
             });
           });
           console.log(entries);
@@ -40,7 +47,8 @@ class Dashboard extends Component {
             user: data,
             nation: data.nation,
             phrasebooks: data.phrasebooks,
-            entries: entries
+            entries: entries,
+            phrases: phrases
           });
         });
     }
@@ -107,7 +115,7 @@ class Dashboard extends Component {
     };
 
     fetch("http://localhost:3000/entries", {
-      method: "Post",
+      method: "POST",
       body: JSON.stringify(newEntry),
       headers: {
         "Content-Type": "application/json",
@@ -118,11 +126,11 @@ class Dashboard extends Component {
       .then(data => {
         debugger;
         let newEntries = [...this.state.entries, data];
-        let newUser = { ...this.state.user.entries, data };
-        console.log(newUser);
+        // let newUser = { ...this.state.user.entries, data };
         this.setState({
           entries: newEntries
         });
+        this.setState(this.state);
       });
   };
   render() {
@@ -156,6 +164,7 @@ class Dashboard extends Component {
                 phrasebook={this.state.activePhrasebook}
                 entries={this.state.entries}
                 createEntry={this.createEntry}
+                activePhrasebook={this.state.activePhrasebook}
               />
             </Grid.Column>
           </Grid>

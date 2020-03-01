@@ -60,28 +60,6 @@ class Translate extends Component {
     console.log(this.state);
   };
 
-  createEntry = e => {
-    let newEntry = {
-      phrasebook_id: this.props.phrasebook.id,
-      phrase_id: this.state.activePhrase.id
-    };
-
-    console.log(newEntry);
-    // fetch("http://localhost:3000/entries", {
-    //   method: "post",
-    //   body: JSON.stringify(newUser),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json"
-    //   }
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.setState({
-    //       entries: [...this.state.entries, data]
-    //     });
-    //   });
-  };
   render() {
     const categories = [
       {
@@ -209,7 +187,10 @@ class Translate extends Component {
           </Button.Group>
         </div>
         <div>My Phrases</div>
-        <EntryList entries={this.props.entries}></EntryList>
+        <EntryList
+          entries={this.props.entries}
+          activePhrasebook={this.props.activePhrasebook}
+        ></EntryList>
       </Container>
     );
   }

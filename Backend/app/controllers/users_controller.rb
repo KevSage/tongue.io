@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def decode
     @currentUser = User.find_by(id: current_user)
    render json: @currentUser, :include => {
-    :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language , :entries]}  }
+    :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language , :phrases, :entries]}  }
   end
 
   # POST /users

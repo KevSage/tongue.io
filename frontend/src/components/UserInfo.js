@@ -3,10 +3,6 @@ import { Divider, Grid, Image, Segment } from "semantic-ui-react";
 import EditUser from "../components/EditUser";
 
 function UserInfo(props) {
-  //   let entries = props.user.phrasebooks.forEach(book =>
-  //     console.log(book.entries)
-  //   );
-  // debugger;
   return (
     <div>
       <Segment>
@@ -27,7 +23,7 @@ function UserInfo(props) {
               <p>Phrasebook(s)</p>
             </div>
             <div>
-              <p>{props.entries ? props.entries.length : 0}</p>
+              <p>{props.entries ? props.user.entries.length : 0}</p>
               <p>Translation(s)</p>
             </div>
           </Grid.Column>
