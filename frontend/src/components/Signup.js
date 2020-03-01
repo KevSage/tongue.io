@@ -16,8 +16,6 @@ class Signup extends Component {
         [event.target.name]: event.target.value
       });
     } else {
-      console.log(event.target);
-      console.log(event.target.children[1].textContent);
       this.setState({
         nation: event.target.children[1].textContent
       });

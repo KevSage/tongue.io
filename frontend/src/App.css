@@ -22,6 +22,15 @@
   font-size: 30px;
   color: #ff686b;
 }
+
+.editForm .description {
+  width: 50% !important;
+}
+
+.bookBtn button {
+  width: 100% !important;
+  font-size: 50% !important;
+}
 .translation-text {
   color: #ff686b;
   font-size: 2em;
@@ -31,6 +40,10 @@
   display: inline-block;
   margin: 20px;
   width: 40% !important;
+}
+.book_card .header,
+.meta {
+  font-size: 90% !important;
 }
 
 .country-container {

@@ -1,5 +1,6 @@
 import React from "react";
 import { Divider, Grid, Image, Segment } from "semantic-ui-react";
+import EditUser from "../components/EditUser";
 
 function UserInfo(props) {
   //   let entries = props.user.phrasebooks.forEach(book =>
@@ -12,8 +13,11 @@ function UserInfo(props) {
         <Grid columns={2} relaxed="very">
           <Grid.Column>
             <Image src={props.user.nation.flag} size="small" avatar />
-            <p>{props.user.user.username}</p>
-            <p>{props.user.nation.name}</p>
+            <p>Username: {props.user.user.username}</p>
+            <p>Email: {props.user.user.email}</p>
+            <p>Country: {props.user.nation.name}</p>
+            {/* <Icon name="pencil alternate" /> */}
+            <EditUser user={props.user}></EditUser>
           </Grid.Column>
           <Grid.Column>
             <div>
@@ -23,8 +27,8 @@ function UserInfo(props) {
               <p>Phrasebook(s)</p>
             </div>
             <div>
-              {/* <p>{props.user.entries ? props.user.entries.length : 0}</p>
-              <p>Translation(s)</p> */}
+              <p>{props.user.entries ? props.user.entries.length : 0}</p>
+              <p>Translation(s)</p>
             </div>
           </Grid.Column>
         </Grid>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Dropdown } from "semantic-ui-react";
 import { Animated } from "react-animated-css";
+import EntryList from "../components/EntryList";
 class Translate extends Component {
   state = {
     input: "",
@@ -8,14 +9,15 @@ class Translate extends Component {
     language: "",
     category: "",
     abbr: "",
-    phrase_id: ""
+    activePhrase: {}
   };
 
-  onChange = e => {
+  handleInput = e => {
+    console.log(e.target);
+
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   };
 
   translate = () => {
@@ -37,18 +39,21 @@ class Translate extends Component {
     })
       //   .then(res => res.json())
       .then(res => res.json())
-      .then(data =>
+      .then(data => {
+        let activePhrase = data[1];
         this.setState({
-          translation: data.data.translations[0].translatedText
-        })
-      )
-
+          activePhrase: activePhrase,
+          translation: data[0].data.translations[0].translatedText
+        });
+      })
       .catch(err => console.log(err));
+    console.log(this.state);
   };
 
   setCategory = e => {
-    let cat = document.querySelector(".categoryDropdown");
-    cat = cat.querySelector(".text").innerHTML;
+    // debugger;
+    // let cat = document.querySelector(".categoryDropdown");
+    let cat = e.target.textContent;
     this.setState({
       category: cat
     });
@@ -57,68 +62,67 @@ class Translate extends Component {
 
   createEntry = e => {};
   render() {
-    console.log(this.props);
     const categories = [
       {
         key: "Food",
         text: "Food",
         value: "Food",
-        id: "Food",
-        image: { avatar: true, src: "/images/avatar/small/jenny.jpg" }
+        id: "Food"
+        // image: { avatar: true, src: "../icons/iconfinder_28_3319616.png" }
       },
       {
         key: "Transportation",
         text: "Transportation",
-        value: "Transportation",
-        image: { avatar: true, src: "/images/avatar/small/elliot.jpg" }
+        value: "Transportation"
+        // image: { avatar: true, src: "../icons/iconfinder_28_3319616.png" }
       },
       {
         key: "Shopping",
         text: "Shopping",
-        value: "Shopping",
-        image: { avatar: true, src: "/images/avatar/small/stevie.jpg" }
+        value: "Shopping"
+        // image: { avatar: true, src: "../icons/iconfinder_28_3319616.png" }
       },
       {
         key: "Greetings",
         text: "Greetings",
-        value: "Greetings",
-        image: { avatar: true, src: "/images/avatar/small/christian.jpg" }
+        value: "Greetings"
+        // image: { avatar: true, src: "/images/avatar/small/christian.jpg" }
       },
       {
         key: "Emergency",
         text: "Emergency",
-        value: "Emergency",
-        image: { avatar: true, src: "/images/avatar/small/matt.jpg" }
+        value: "Emergency"
+        // image: { avatar: true, src: "/images/avatar/small/matt.jpg" }
       },
       {
         key: "Sightseeing",
         text: "Sightseeing",
-        value: "Sightseeing",
-        image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
+        value: "Sightseeing"
+        // image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
       },
       {
         key: "Money",
         text: "Money",
-        value: "Money",
-        image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
+        value: "Money"
+        // image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
       },
       {
         key: "Numbers and Time",
         text: "Numbers and Time",
-        value: "Numbers and Time",
-        image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
+        value: "Numbers and Time"
+        // image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
       },
       {
         key: "Directions",
         text: "Directions",
-        value: "Directions",
-        image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
+        value: "Directions"
+        // image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
       },
       {
         key: "Hotel",
         text: "Hotel",
-        value: "Hotel",
-        image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
+        value: "Hotel"
+        // image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
       }
     ];
     return (
@@ -141,7 +145,7 @@ class Translate extends Component {
                 label="Translation"
                 name="input"
                 placeholder="Enter phrase to be translated"
-                onChange={this.onChange}
+                onChange={this.handleInput}
                 value={this.state.input}
               />
             </Form.Group>
@@ -151,17 +155,13 @@ class Translate extends Component {
               ? this.props.phrasebook.language.name
               : "Choose a phrasebook"
           })`}</div>
-          <Animated
-            animationIn="bounceInLeft"
-            animationOut="fadeOut"
-            isVisible={true}
-          >
-            <div
-              fluid
-              dangerouslySetInnerHTML={{ __html: this.state.translation }}
-              className="translation-text"
-            ></div>
-          </Animated>
+
+          <div
+            fluid
+            dangerouslySetInnerHTML={{ __html: this.state.translation }}
+            className="translation-text"
+          ></div>
+          {/* </Animated> */}
 
           <br />
           <br />
@@ -184,7 +184,8 @@ class Translate extends Component {
             <Button icon="cancel" content="Clear" basic color="red" disabled />
           </Button.Group>
         </div>
-        <div></div>
+        <div>My Phrases</div>
+        <EntryList entries={this.props.entries}></EntryList>
       </Container>
     );
   }

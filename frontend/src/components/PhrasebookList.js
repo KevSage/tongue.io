@@ -1,30 +1,17 @@
 import React from "react";
-import {
-  Card,
-  Icon,
-  Button,
-  Header,
-  Container,
-  Dropdown
-} from "semantic-ui-react";
-import Languages from "../Languages";
+import { Card, Button } from "semantic-ui-react";
 
-const addBook = e => {
-  console.log(e.target.value);
-};
-
-const languages = { Languages };
 const PhrasebookContainer = props => {
   return props.phrasebooks.map(book => (
     <div className="book_card">
       <Card>
         <Card.Content>
           <Card.Header>{book.language.name}</Card.Header>
-          {console.log(book.language.nations)}
+          {/* {console.log(book.language.nations)} */}
           <Card.Meta>Country, Names, Here</Card.Meta>
           <Card.Description>Phrases: {book.entries.length}</Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content extra className="bookBtn">
           <div className={book.language.name}>
             <Button
               basic

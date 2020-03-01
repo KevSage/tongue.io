@@ -23,7 +23,15 @@ class PhrasesController < ApplicationController
     if @phrase.save
       
       translation = @phrase.translate(params[:target])
-      render json: translation
+      # phrase_id = JSON.parse(@phrase)
+      transArray = [translation, @phrase]
+      render json: transArray
+
+      # translation = @phrase.translate(params[:target])
+      # phrase_id = @phrase.id
+      # newPhraseObj = {id: phrase_id, translation: translation}
+      # byebug
+      # render newPhraseObj
     else
       render json: @phrase.errors, status: :unprocessable_entity
     end

@@ -12,7 +12,8 @@ class Dashboard extends Component {
     nation: {},
     phrasebooks: [],
     entries: [],
-    activePhrasebook: ""
+    activePhrasebook: "",
+    activePhrase: ""
   };
 
   componentDidMount() {
@@ -26,13 +27,16 @@ class Dashboard extends Component {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data);
-
+          let books = [];
+          let entries = [];
+          data.phrasebooks.map(book => books.push(book));
+          books.map(entry => entries.push(entry));
+          console.log(entries);
           this.setState({
             user: data,
             nation: data.nation,
-            phrasebooks: data.phrasebooks
-            // entries: data.phrasebooks.entries
+            phrasebooks: data.phrasebooks,
+            entries: entries
           });
         });
     }
@@ -91,7 +95,6 @@ class Dashboard extends Component {
     });
   };
   render() {
-    console.log(this.state);
     return (
       <div>
         <Navbar />
@@ -115,7 +118,7 @@ class Dashboard extends Component {
             <Grid.Column>
               <Translate
                 phrasebook={this.state.activePhrasebook}
-                entries={this.state.phrasebooks}
+                entries={this.state.entries}
               />
             </Grid.Column>
           </Grid>
