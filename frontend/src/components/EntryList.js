@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Accordion, Icon } from "semantic-ui-react";
 
 class EntryList extends Component {
-  state = { activeIndex: 0 };
+  state = { activeIndex: 0, workingPhrases: [] };
 
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
@@ -12,20 +12,53 @@ class EntryList extends Component {
     this.setState({ activeIndex: newIndex });
   };
 
+  // translate = phrase => {
+  //   let translation = {
+  //     input: phrase.input,
+  //     category: this.state.category,
+  //     target: this.props.activePhrasebook.language.abbr
+  //   };
+
+  //   fetch("http://localhost:3000/phrases", {
+  //     method: "post",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+
+  //     body: JSON.stringify(translation)
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       let newEntry = data[0].data.translations[0].translatedText;
+  //       let newEntries = [...this.state.workingPhrases, newEntry];
+  //       this.setState({
+  //         workingPhrases: newEntries
+  //       });
+  //     });
+
+  //   // .catch(err => console.log(err));
+  // };
+
   render() {
     const { activeIndex } = this.state;
-    //Create a translateOrganize method in the entries controller that
-    //organizes them into categories, and returns an array of arrays back
-    //to the frontend. Build an Accordian for each category. Then we need to
-    //translate each entry.
-
+    const workingPhrases = [];
+    // if (this.props.activePhrasebook !== "") {
+    //   this.props.activePhrasebook.phrases.map(phrase => {
+    //     workingPhrases.push(this.translate(phrase));
+    //   });
+    // }
+    // console.log(this.state.workingPhrases);
     return (
       <div>
-        {this.props.activePhrasebook
-          ? this.props.activePhrasebook.phrases.map(phrase => (
-              <p>{phrase.input}</p>
-            ))
-          : "No Phrases yet?"}
+        {this.props.activePhrasebook === "" ||
+        this.props.activePhrasebook.phrases === undefined
+          ? "No Phrases yet?"
+          : this.props.activePhrasebook.phrases.map(phrase => (
+              <div>
+                {" "}
+                <p>{phrase.input}</p>
+              </div>
+            ))}
       </div>
     );
   }

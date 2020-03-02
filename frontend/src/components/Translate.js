@@ -142,7 +142,11 @@ class Translate extends Component {
             <Form.Group widths="equal">
               <Form.Input
                 fluid
-                label="Translation"
+                label={`Translation (${
+                  this.props.phrasebook.language
+                    ? this.props.phrasebook.language.name
+                    : "Choose a phrasebook"
+                })`}
                 name="input"
                 placeholder="Enter phrase to be translated"
                 onChange={this.handleInput}
@@ -150,11 +154,11 @@ class Translate extends Component {
               />
             </Form.Group>
           </Form>
-          <div>{`Translation (${
+          {/* <div>{`Translation (${
             this.props.phrasebook.language
               ? this.props.phrasebook.language.name
               : "Choose a phrasebook"
-          })`}</div>
+          })`}</div> */}
 
           <div
             fluid
