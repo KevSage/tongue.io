@@ -6,6 +6,7 @@ import { Container, Segment, Grid, Divider } from "semantic-ui-react";
 import AddBook from "../components/AddBook";
 import PhrasebookHeader from "../components/PhrasebookHeader";
 import Translate from "../components/Translate";
+import { connect } from "react-redux";
 class Dashboard extends Component {
   state = {
     user: {},
@@ -28,28 +29,7 @@ class Dashboard extends Component {
       })
         .then(res => res.json())
         .then(data => {
-          let books = [];
-          let entries = [];
-          let phrases = [];
-
-          data.phrasebooks.map(book => {
-            book.entries.map(entry => {
-              entries.push(entry);
-            });
-          });
-          data.phrasebooks.map(book => {
-            book.phrases.map(phrase => {
-              phrases.push(phrase);
-            });
-          });
-          console.log(entries);
-          this.setState({
-            user: data,
-            nation: data.nation,
-            phrasebooks: data.phrasebooks,
-            entries: entries,
-            phrases: phrases
-          });
+          this.props.set_user(data);
         });
     }
   }
@@ -58,7 +38,7 @@ class Dashboard extends Component {
     let lang = document.querySelector(".book_language div").textContent;
 
     let newBook = {
-      user_id: this.state.user.id,
+      user_id: this.props.user.id,
       average_score: 0,
       language: lang
     };
@@ -97,20 +77,21 @@ class Dashboard extends Component {
 
   chooseDeck = e => {
     console.log(e.target.value);
-    let obj = this.state.phrasebooks.find(
+    let obj = this.props.phrasebooks.find(
       book => book.language.name === e.target.value
     );
     console.log(obj);
 
-    this.setState({
-      activePhrasebook: obj
-    });
+    // this.setState({
+    //   activePhrasebook: obj
+    // });
+    this.props.set_active_phrasebook(obj);
   };
 
   createEntry = entry => {
     console.log(entry);
     let newEntry = {
-      phrasebook_id: this.state.activePhrasebook.id,
+      phrasebook_id: this.props.active_phrasebook.id,
       phrase_id: entry
     };
 
@@ -130,7 +111,7 @@ class Dashboard extends Component {
         this.setState({
           entries: newEntries
         });
-        this.setState(this.state);
+        this.props.save_entry(data);
       });
   };
   render() {
@@ -154,7 +135,7 @@ class Dashboard extends Component {
                   user={this.state}
                   addBook={this.addBook}
                   chooseDeck={this.chooseDeck}
-                  phrasebooks={this.state.phrasebooks}
+                  // phrasebooks={this.state.phrasebooks}
                   deleteBook={this.deleteBook}
                 />
               </Container>
@@ -175,4 +156,18 @@ class Dashboard extends Component {
     );
   }
 }
-export default Dashboard;
+
+const mapStateToProps = state => {
+  return { ...state.user, ...state.active_phrasebook };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    set_user: data => dispatch({ type: "SET_USER", value: data }),
+    set_active_phrasebook: data =>
+      dispatch({ type: "SET_ACTIVE_PHRASEBOOK", value: data }),
+    save_entry: data => dispatch({ type: "SAVE_ENTRY", value: data })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

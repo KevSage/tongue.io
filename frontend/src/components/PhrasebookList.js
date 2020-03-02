@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button } from "semantic-ui-react";
+import { connect } from "react-redux";
 
 const PhrasebookContainer = props => {
   console.log(props.phrasebooks[0]);
@@ -37,23 +38,11 @@ const PhrasebookContainer = props => {
           </div>
         </Card.Content>
       </Card>
-
-      {/* <div>
-        <Container>
-          <Dropdown
-            placeholder="Select a Language"
-            options={Languages}
-            fluid
-            selection
-            className="book_language"
-            // onChange={handleSelection}
-          />
-
-          <Button color="red" onClick={(e) => {props.addBook(e)}}>Add Book</Button>
-        </Container>
-      </div> */}
     </div>
   ));
 };
+const mapStateToProps = state => {
+  return { ...state.user, ...state.phrasebooks };
+};
 
-export default PhrasebookContainer;
+export default connect(mapStateToProps)(PhrasebookContainer);

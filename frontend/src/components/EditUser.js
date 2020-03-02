@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Image, Modal, Icon, Form, Dropdown } from "semantic-ui-react";
 import { COUNTRY_OPTIONS } from "../countriesData.js";
+import { connect } from "react-redux";
 
 class EditUser extends Component {
   state = {
@@ -60,7 +61,7 @@ class EditUser extends Component {
         >
           <Modal.Header>Edit Profile</Modal.Header>
           <Modal.Content image>
-            <Image wrapped size="medium" src={this.props.user.nation.flag} />
+            <Image wrapped size="medium" src={this.props.nation.flag} />
             <Modal.Description>
               <Form>
                 <Form.Field>
@@ -69,7 +70,7 @@ class EditUser extends Component {
                     placeholder="Username"
                     name="username"
                     onChange={this.handleFormInput}
-                    defaultValue={this.props.user.user.username}
+                    defaultValue={this.props.username}
                   />
                 </Form.Field>
                 <Form.Field>
@@ -78,7 +79,7 @@ class EditUser extends Component {
                     placeholder="Email Address"
                     name="email"
                     onChange={this.handleFormInput}
-                    defaultValue={this.props.user.user.email}
+                    defaultValue={this.props.email}
                   />
                 </Form.Field>
 
@@ -119,5 +120,7 @@ class EditUser extends Component {
     );
   }
 }
-
-export default EditUser;
+const mapStateToProps = state => {
+  return { ...state.user };
+};
+export default connect(mapStateToProps)(EditUser);

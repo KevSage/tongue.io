@@ -1,7 +1,15 @@
 import React, { Component } from "react";
-import { Form, Button, Container, Dropdown } from "semantic-ui-react";
+import {
+  Form,
+  Button,
+  Container,
+  Dropdown,
+  Segment,
+  Divider
+} from "semantic-ui-react";
 import { Animated } from "react-animated-css";
 import EntryList from "../components/EntryList";
+import { connect } from "react-redux";
 class Translate extends Component {
   state = {
     input: "",
@@ -24,7 +32,7 @@ class Translate extends Component {
     let phrase = {
       input: this.state.input,
       category: this.state.category,
-      target: this.props.phrasebook.language.abbr
+      target: this.props.active_phrasebook.language.abbr
     };
 
     fetch("http://localhost:3000/phrases", {
@@ -126,7 +134,7 @@ class Translate extends Component {
     ];
     let phrase_id = this.state.activePhrase.id;
     return (
-      <Container>
+      <Segment>
         <div>
           <span>
             Select a Category
@@ -142,15 +150,17 @@ class Translate extends Component {
             <Form.Group widths="equal">
               <Form.Input
                 fluid
-                label={`Translation (${
-                  this.props.phrasebook.language
-                    ? this.props.phrasebook.language.name
+                label={`${
+                  this.props.active_phrasebook.language
+                    ? this.props.active_phrasebook.language.name
                     : "Choose a phrasebook"
-                })`}
+                }`}
+                // label="Translation"
                 name="input"
                 placeholder="Enter phrase to be translated"
                 onChange={this.handleInput}
                 value={this.state.input}
+                className="translationHeader"
               />
             </Form.Group>
           </Form>
@@ -167,9 +177,6 @@ class Translate extends Component {
           ></div>
           {/* </Animated> */}
 
-          <br />
-          <br />
-
           <Button.Group vertical labeled icon>
             <Button
               basic
@@ -182,7 +189,6 @@ class Translate extends Component {
               basic
               color="yellow"
               icon="angle double down"
-              // disabled
               content="Save"
               value={phrase_id}
               onClick={data => this.props.createEntry(phrase_id)}
@@ -190,14 +196,18 @@ class Translate extends Component {
             <Button icon="cancel" content="Clear" basic color="red" disabled />
           </Button.Group>
         </div>
+        <Divider section />
         <div>My Phrases</div>
+
         <EntryList
-          entries={this.props.entries}
-          activePhrasebook={this.props.activePhrasebook}
+        // entries={this.props.active_phrasebook.value.entries}
+        // activePhrasebook={this.props.activePhrasebook}
         ></EntryList>
-      </Container>
+      </Segment>
     );
   }
 }
-
-export default Translate;
+const mapstateToProps = state => {
+  return { ...state.user, ...state.active_phrasebook };
+};
+export default connect(mapstateToProps)(Translate);

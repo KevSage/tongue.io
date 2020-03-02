@@ -1,6 +1,7 @@
 import React from "react";
 import { Divider, Grid, Image, Segment } from "semantic-ui-react";
 import EditUser from "../components/EditUser";
+import { connect } from "react-redux";
 
 function UserInfo(props) {
   return (
@@ -8,10 +9,10 @@ function UserInfo(props) {
       <Segment>
         <Grid columns={2} relaxed="very">
           <Grid.Column>
-            <Image src={props.user.nation.flag} size="small" avatar />
-            <p>Username: {props.user.user.username}</p>
-            <p>Email: {props.user.user.email}</p>
-            <p>Country: {props.user.nation.name}</p>
+            <Image src={props.nation.flag} size="small" avatar />
+            <p>Username: {props.username}</p>
+            <p>Email: {props.email}</p>
+            <p>Country: {props.nation.name}</p>
             {/* <Icon name="pencil alternate" /> */}
             <EditUser user={props.user}></EditUser>
           </Grid.Column>
@@ -23,7 +24,7 @@ function UserInfo(props) {
               <p>Phrasebook(s)</p>
             </div>
             <div>
-              <p>{props.entries ? props.user.entries.length : 0}</p>
+              <p>{props.entries ? props.entries.length : 0}</p>
               <p>Translation(s)</p>
             </div>
           </Grid.Column>
@@ -35,4 +36,14 @@ function UserInfo(props) {
     </div>
   );
 }
-export default UserInfo;
+
+// const mapStateToProps = state => {
+//   return { ...state.user };
+// };
+
+const mapStateToProps = state => {
+  return { ...state.user };
+};
+
+// const mapDispatchToProps = state => {};
+export default connect(mapStateToProps)(UserInfo);

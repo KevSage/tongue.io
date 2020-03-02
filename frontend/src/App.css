@@ -54,7 +54,14 @@
 
 .bookBtn button {
   width: 100% !important;
-  font-size: 50% !important;
+  font-size: 70% !important;
+}
+.translationHeader label {
+  color: indigo !important;
+  font-size: 1.2em !important;
+}
+.translationHeader input {
+  width: 50% !important;
 }
 .translation-text {
   color: #ff686b;
