@@ -53,11 +53,14 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
+      <div className="signup">
         <div className="loginHeader">Tongue.io</div>
 
         <Container>
-          <Form onSubmit={event => this.createUser(event)}>
+          <Form
+            onSubmit={event => this.createUser(event)}
+            className="signinForm"
+          >
             <Form.Field>
               <label>Username</label>
               <input
@@ -100,7 +103,9 @@ class Signup extends Component {
             </Form.Field>
 
             <br />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" color="red">
+              Submit
+            </Button>
           </Form>
         </Container>
       </div>
