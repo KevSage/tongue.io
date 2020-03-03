@@ -56,37 +56,39 @@ class Dashboard extends Component {
         this.setState({
           phrasebooks: newBookList
         });
+        this.props.add_phrasebook(book);
       });
   };
-  deleteBook = e => {
-    let bookId = e.target.value;
-    fetch("http://localhost:3000/phrasebooks/" + bookId, {
-      method: "DELETE"
-    })
-      .then(res => res.text())
-      .then(data => {
-        console.log(bookId);
-        console.log(this.state.phrasebooks);
-        let newArray = this.state.phrasebooks;
-        let newestArr = newArray.filter(book => book.id !== parseInt(bookId));
-        this.setState({
-          phrasebooks: newestArr
-        });
-      });
-  };
+  // deleteBook = e => {
+  //   let bookId = e.target.value;
+  //   // fetch("http://localhost:3000/phrasebooks/" + bookId, {
+  //   //   method: "DELETE"
+  //   // })
+  //   //   .then(res => res.text())
+  //   //   .then(data => {
+  //   //     console.log(bookId);
+  //   //     console.log(this.state.phrasebooks);
+  //   //     let newArray = this.state.phrasebooks;
+  //   //     let newestArr = newArray.filter(book => book.id !== parseInt(bookId));
+  //   //     this.setState({
+  //   //       phrasebooks: newestArr
+  //   //     });
+  //   //   });
+  //   this.props.delete_phrasebook(bookId);
+  // };
 
-  chooseDeck = e => {
-    console.log(e.target.value);
-    let obj = this.props.phrasebooks.find(
-      book => book.language.name === e.target.value
-    );
-    console.log(obj);
+  // chooseDeck = e => {
+  //   console.log(e.target.value);
+  //   let obj = this.props.phrasebooks.find(
+  //     book => book.language.name === e.target.value
+  //   );
+  //   console.log(obj);
 
-    // this.setState({
-    //   activePhrasebook: obj
-    // });
-    this.props.set_active_phrasebook(obj);
-  };
+  //   // this.setState({
+  //   //   activePhrasebook: obj
+  //   // });
+  //   this.props.set_active_phrasebook(obj);
+  // };
 
   createEntry = entry => {
     console.log(entry);
@@ -132,11 +134,11 @@ class Dashboard extends Component {
                 <AddBook user={this.state} addBook={this.addBook} />
 
                 <PhrasebookList
-                  user={this.state}
-                  addBook={this.addBook}
-                  chooseDeck={this.chooseDeck}
-                  // phrasebooks={this.state.phrasebooks}
-                  deleteBook={this.deleteBook}
+                // user={this.state}
+                // addBook={this.addBook}
+                // chooseDeck={this.chooseDeck}
+                // phrasebooks={this.state.phrasebooks}
+                // deleteBook={this.deleteBook}
                 />
               </Container>
             </Grid.Column>
@@ -166,7 +168,10 @@ const mapDispatchToProps = dispatch => {
     set_user: data => dispatch({ type: "SET_USER", value: data }),
     set_active_phrasebook: data =>
       dispatch({ type: "SET_ACTIVE_PHRASEBOOK", value: data }),
-    save_entry: data => dispatch({ type: "SAVE_ENTRY", value: data })
+    save_entry: data => dispatch({ type: "SAVE_ENTRY", value: data }),
+    add_phrasebook: data => dispatch({ type: "ADD_PHRASEBOOK", value: data }),
+    delete_phrasebook: data =>
+      dispatch({ type: "DELETE_PHRASEBOOK", value: data })
   };
 };
 

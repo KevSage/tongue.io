@@ -41,6 +41,32 @@ export default (state = initialState, action) => {
         ...state,
         entries: [...state.entries, action.value]
       };
+    case "ADD_PHRASEBOOK":
+      return {
+        ...state,
+        phrasebooks: [...state.phrasebooks, action.value]
+      };
+    case "DELETE_PHRASEBOOK":
+      console.log("hit reducer");
+      let newestArr = [];
+      fetch("http://localhost:3000/phrasebooks/" + action.value, {
+        method: "DELETE"
+      })
+        .then(res => res.text())
+        .then(data => {
+            console.log(data)
+        //   let newArray = [...state.phrasebooks];
+        //   let newestArr = newArray.filter(
+        //     book => book.id !== parseInt(action.value)
+        //   );
+          
+        });
+        newestArr = state.phrasebooks.filter(book => book.id !== parseInt(action.value))
+      return {
+        ...state,
+        phrasebooks: newestArr
+      };
+
     default:
       return state;
   }
