@@ -62,10 +62,10 @@ class Translate extends Component {
     // debugger;
     // let cat = document.querySelector(".categoryDropdown");
     let cat = e.target.textContent;
+    console.log(cat);
     this.setState({
       category: cat
     });
-    console.log(this.state);
   };
 
   render() {
@@ -197,7 +197,7 @@ class Translate extends Component {
           </Button.Group>
         </div>
         <Divider section />
-        <div>My Phrases</div>
+        <div>Phrase Bank</div>
 
         <EntryList
         // entries={this.props.active_phrasebook.value.entries}

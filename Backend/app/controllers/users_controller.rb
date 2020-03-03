@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   def show 
     render json: @user, :include => {
-      :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language ]} }
+      :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language]} }
   end
 
   def decode

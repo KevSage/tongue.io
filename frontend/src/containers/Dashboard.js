@@ -59,36 +59,6 @@ class Dashboard extends Component {
         this.props.add_phrasebook(book);
       });
   };
-  // deleteBook = e => {
-  //   let bookId = e.target.value;
-  //   // fetch("http://localhost:3000/phrasebooks/" + bookId, {
-  //   //   method: "DELETE"
-  //   // })
-  //   //   .then(res => res.text())
-  //   //   .then(data => {
-  //   //     console.log(bookId);
-  //   //     console.log(this.state.phrasebooks);
-  //   //     let newArray = this.state.phrasebooks;
-  //   //     let newestArr = newArray.filter(book => book.id !== parseInt(bookId));
-  //   //     this.setState({
-  //   //       phrasebooks: newestArr
-  //   //     });
-  //   //   });
-  //   this.props.delete_phrasebook(bookId);
-  // };
-
-  // chooseDeck = e => {
-  //   console.log(e.target.value);
-  //   let obj = this.props.phrasebooks.find(
-  //     book => book.language.name === e.target.value
-  //   );
-  //   console.log(obj);
-
-  //   // this.setState({
-  //   //   activePhrasebook: obj
-  //   // });
-  //   this.props.set_active_phrasebook(obj);
-  // };
 
   createEntry = entry => {
     console.log(entry);
@@ -107,23 +77,29 @@ class Dashboard extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        debugger;
-        let newEntries = [...this.state.entries, data];
+        let newPhrasebooks = [...this.state.phrasebooks];
         // let newUser = { ...this.state.user.entries, data };
         this.setState({
-          entries: newEntries
+          phrasebooks: data
         });
         this.props.save_entry(data);
       });
   };
+  getTotalEntries = () => {
+    let total = 0;
+    this.props.phrasebooks.map(book => {
+      total += book.entries.length;
+    });
+    debugger;
+  };
+
   render() {
-    console.log(this.state.phrasebooks);
     return (
       <div>
         <Navbar />
         <UserInfo
           user={this.state}
-          entries={this.state.entries}
+          entries={this.getTotalEntries}
           phrasebooks={this.state.phrasebooks}
         />
         <Segment>
@@ -133,13 +109,7 @@ class Dashboard extends Component {
                 <PhrasebookHeader />
                 <AddBook user={this.state} addBook={this.addBook} />
 
-                <PhrasebookList
-                // user={this.state}
-                // addBook={this.addBook}
-                // chooseDeck={this.chooseDeck}
-                // phrasebooks={this.state.phrasebooks}
-                // deleteBook={this.deleteBook}
-                />
+                <PhrasebookList />
               </Container>
             </Grid.Column>
             <Grid.Column>
@@ -160,7 +130,11 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  return { ...state.user, ...state.active_phrasebook };
+  return {
+    ...state.user,
+    ...state.active_phrasebook,
+    ...state.phrasebooks
+  };
 };
 
 const mapDispatchToProps = dispatch => {

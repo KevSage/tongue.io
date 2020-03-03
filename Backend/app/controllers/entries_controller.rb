@@ -10,16 +10,19 @@ class EntriesController < ApplicationController
 
   # GET /entries/1
   def show
-    render json: @entry, :include => [:phrase]
+    render json: @entry, :include => [:phrase, :phrasebook]
   end
 
   # POST /entries
   def create
     @entry = Entry.new(entry_params)
-
+   
     if @entry.save
       # newEntry = @entry.translate
-      render json: @entry, status: :created, location: @entry
+      @phrasebooks = @entry.phrasebook.user.phrasebooks
+      
+
+      render json: @phrasebooks, :include => [:entries, :language], status: :created, location: @entry
     else
       render json: @entry.errors, status: :unprocessable_entity
     end

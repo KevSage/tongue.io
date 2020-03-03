@@ -70,7 +70,7 @@ class EditUser extends Component {
                     placeholder="Username"
                     name="username"
                     onChange={this.handleFormInput}
-                    defaultValue={this.props.username}
+                    defaultValue={this.props.user.username}
                   />
                 </Form.Field>
                 <Form.Field>
@@ -79,7 +79,7 @@ class EditUser extends Component {
                     placeholder="Email Address"
                     name="email"
                     onChange={this.handleFormInput}
-                    defaultValue={this.props.email}
+                    defaultValue={this.props.user.email}
                   />
                 </Form.Field>
 

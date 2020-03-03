@@ -9,27 +9,11 @@ class PhrasebookList extends Component {
       book => book.language.name === e.target.value
     );
     console.log(obj);
-
-    // this.setState({
-    //   activePhrasebook: obj
-    // });
     this.props.set_active_phrasebook(obj);
   };
   deleteBook = e => {
     let bookId = e.target.value;
-    // fetch("http://localhost:3000/phrasebooks/" + bookId, {
-    //   method: "DELETE"
-    // })
-    //   .then(res => res.text())
-    //   .then(data => {
-    //     console.log(bookId);
-    //     console.log(this.state.phrasebooks);
-    //     let newArray = this.state.phrasebooks;
-    //     let newestArr = newArray.filter(book => book.id !== parseInt(bookId));
-    //     this.setState({
-    //       phrasebooks: newestArr
-    //     });
-    //   });
+
     this.props.delete_phrasebook(bookId);
   };
   render() {

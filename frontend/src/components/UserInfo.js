@@ -10,11 +10,11 @@ function UserInfo(props) {
         <Grid columns={2} relaxed="very">
           <Grid.Column>
             <Image src={props.nation.flag} size="small" avatar />
-            <p>Username: {props.username}</p>
-            <p>Email: {props.email}</p>
+            <p>Username: {props.user.username}</p>
+            <p>Email: {props.user.email}</p>
             <p>Country: {props.nation.name}</p>
             {/* <Icon name="pencil alternate" /> */}
-            <EditUser user={props.user}></EditUser>
+            <EditUser></EditUser>
           </Grid.Column>
           <Grid.Column>
             <div>

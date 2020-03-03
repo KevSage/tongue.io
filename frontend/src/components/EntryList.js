@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Icon } from "semantic-ui-react";
+import { Table, Icon, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import _ from "lodash";
 
@@ -40,52 +40,32 @@ class EntryList extends Component {
     const { column, data, direction } = this.state;
 
     const workingPhrases = [];
-
+    debugger;
     return (
       <div>
         <div>
-          {this.props.active_phrasebook.entries
+          {this.props.active_phrasebook.entries &&
+          this.props.active_phrasebook.entries.length > 0
             ? this.props.active_phrasebook.phrases.map(phrase => (
                 <div>
                   {" "}
-                  <p>{phrase.input}</p>
+                  <p className="entry">
+                    {phrase.input}
+                    <Button
+                      onClick={
+                        (phrase = () => this.props.delete_phrase(phrase))
+                      }
+                      color="red"
+                      size="mini"
+                      className="entryBtn"
+                    >
+                      Delete
+                    </Button>
+                  </p>
                 </div>
               ))
             : "No phrases yet!"}
         </div>
-        <Table sortable celled fixed>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell
-                sorted={column === "phrase" ? direction : null}
-                onClick={this.handleSort("phrase")}
-              >
-                Phrase
-              </Table.HeaderCell>
-              <Table.HeaderCell
-                sorted={column === "translation" ? direction : null}
-                onClick={this.handleSort("translation")}
-              >
-                Translation
-              </Table.HeaderCell>
-              <Table.HeaderCell
-                sorted={column === "category" ? direction : null}
-                onClick={this.handleSort("category")}
-              >
-                Category
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {_.map(data, ({ phrase, translation, category }) => (
-              <Table.Row key={phrase}>
-                <Table.Cell>{phrase}</Table.Cell>
-                <Table.Cell>{translation}</Table.Cell>
-                <Table.Cell>{category}</Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
       </div>
     );
   }
@@ -93,4 +73,10 @@ class EntryList extends Component {
 const mapstateToProps = state => {
   return { ...state.user, ...state.active_phrasebook };
 };
-export default connect(mapstateToProps)(EntryList);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    delete_phrase: data => dispatch({ type: "DELETE_PHRASE", value: data })
+  };
+};
+export default connect(mapstateToProps, mapDispatchToProps)(EntryList);
