@@ -46,7 +46,9 @@
 .entryBtn {
   margin-left: 10px !important;
 }
-
+.entryDiv {
+  display: inline-block !important;
+}
 .signup,
 .login {
   background-image: url("./icons/colorful-1974699_1920.png");

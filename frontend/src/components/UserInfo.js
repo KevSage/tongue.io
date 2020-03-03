@@ -1,5 +1,12 @@
 import React from "react";
-import { Divider, Grid, Image, Segment } from "semantic-ui-react";
+import {
+  Divider,
+  Grid,
+  Image,
+  Segment,
+  Statistic,
+  Icon
+} from "semantic-ui-react";
 import EditUser from "../components/EditUser";
 import { connect } from "react-redux";
 
@@ -18,14 +25,20 @@ function UserInfo(props) {
           </Grid.Column>
           <Grid.Column>
             <div>
-              <p>
-                {props.user.phrasebooks ? props.user.phrasebooks.length : 0}
-              </p>
-              <p>Phrasebook(s)</p>
-            </div>
-            <div>
-              <p>{props.entries ? props.entries.length : 0}</p>
-              <p>Translation(s)</p>
+              <Statistic>
+                <Statistic.Value text>
+                  <Icon name="book" />{" "}
+                  {props.user.phrasebooks ? props.user.phrasebooks.length : 0}
+                </Statistic.Value>
+                <Statistic.Label>Phrasebooks</Statistic.Label>
+              </Statistic>
+
+              <Statistic>
+                <Statistic.Value text>
+                  {props.entries ? props.entries.length : 0}
+                </Statistic.Value>
+                <Statistic.Label>Translations</Statistic.Label>
+              </Statistic>
             </div>
           </Grid.Column>
         </Grid>
