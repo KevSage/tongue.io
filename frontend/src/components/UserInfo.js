@@ -20,7 +20,6 @@ function UserInfo(props) {
             <p>Username: {props.user.username}</p>
             <p>Email: {props.user.email}</p>
             <p>Country: {props.nation.name}</p>
-            {/* <Icon name="pencil alternate" /> */}
             <EditUser></EditUser>
           </Grid.Column>
           <Grid.Column>

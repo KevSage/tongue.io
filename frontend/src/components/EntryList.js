@@ -12,9 +12,9 @@ const tableData = [
 
 class EntryList extends Component {
   state = {
-    column: null,
-    data: tableData,
-    direction: null,
+    // column: null,
+    // data: tableData,
+    // direction: null,
     hover: ""
   };
 
@@ -45,8 +45,11 @@ class EntryList extends Component {
     })
       .then(res => res.json())
       .then(response => {
+        let txt = document.createElement("textarea");
+        txt.innerHTML = response["data"]["translations"][0]["translatedText"];
+
         this.setState({
-          hover: response["data"]["translations"][0]["translatedText"]
+          hover: txt.value
         });
       })
       .catch(error => {
@@ -87,12 +90,15 @@ class EntryList extends Component {
                   {" "}
                   <Popup
                     inverted
+                    size="huge"
                     mouseEnterDelay={500}
                     content={this.state.hover}
+                    // dangerouslySetInnerHTML={{ __html: this.state.hover }}
                     trigger={
                       <p
                         className="entry"
                         onMouseEnter={e => this.hoverTranslate(e)}
+                        // dangerouslySetInnerHTML={{ __html: phrase.input }}
                       >
                         {phrase.input}
                         <Button

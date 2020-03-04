@@ -77,12 +77,13 @@ class Dashboard extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        debugger;
         let newPhrasebooks = [...this.state.phrasebooks];
-        // let newUser = { ...this.state.user.entries, data };
         this.setState({
           phrasebooks: data
         });
         this.props.save_entry(data);
+        this.props.add_phrase();
       });
   };
   getTotalEntries = () => {
@@ -93,10 +94,14 @@ class Dashboard extends Component {
     debugger;
   };
 
+  logout = () => {
+    localStorage.clear();
+  };
+
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar logout={this.logout} />
         <UserInfo
           user={this.state}
           entries={this.getTotalEntries}
@@ -133,6 +138,7 @@ const mapStateToProps = state => {
   return {
     ...state.user,
     ...state.active_phrasebook,
+    ...state.active_phrase,
     ...state.phrasebooks
   };
 };
@@ -145,7 +151,8 @@ const mapDispatchToProps = dispatch => {
     save_entry: data => dispatch({ type: "SAVE_ENTRY", value: data }),
     add_phrasebook: data => dispatch({ type: "ADD_PHRASEBOOK", value: data }),
     delete_phrasebook: data =>
-      dispatch({ type: "DELETE_PHRASEBOOK", value: data })
+      dispatch({ type: "DELETE_PHRASEBOOK", value: data }),
+    add_phrase: data => dispatch({ type: "ADD_PHRASE", value: data })
   };
 };
 

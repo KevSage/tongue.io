@@ -1,8 +1,9 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-function Navbar() {
+function Navbar(props) {
   return (
     <Menu stackable>
       <Menu.Item>
@@ -25,14 +26,12 @@ function Navbar() {
         <Link to="/countries">Countries</Link>{" "}
       </Menu.Item>
 
-      <Menu.Item
-        name="log0ut"
-        // active={activeItem === "log0ut"}
-        // onClick={this.handleItemClick}
-      >
-        Logout
+      <Menu.Item name="log0ut">
+        <Link to="/login" onClick={props.logout}>
+          Logout
+        </Link>{" "}
       </Menu.Item>
     </Menu>
   );
 }
-export default Navbar;
+export default withRouter(Navbar);

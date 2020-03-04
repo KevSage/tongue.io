@@ -21,8 +21,6 @@ class Translate extends Component {
   };
 
   handleInput = e => {
-    console.log(e.target);
-
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -53,18 +51,22 @@ class Translate extends Component {
           activePhrase: activePhrase,
           translation: data[0].data.translations[0].translatedText
         });
+        this.props.set_active_phrase(data[1]);
       })
       .catch(err => console.log(err));
-    console.log(this.state);
   };
 
   setCategory = e => {
-    // debugger;
-    // let cat = document.querySelector(".categoryDropdown");
     let cat = e.target.textContent;
     console.log(cat);
     this.setState({
       category: cat
+    });
+  };
+
+  clearPhrase = () => {
+    this.setState({
+      input: ""
     });
   };
 
@@ -164,18 +166,12 @@ class Translate extends Component {
               />
             </Form.Group>
           </Form>
-          {/* <div>{`Translation (${
-            this.props.phrasebook.language
-              ? this.props.phrasebook.language.name
-              : "Choose a phrasebook"
-          })`}</div> */}
 
           <div
             fluid
             dangerouslySetInnerHTML={{ __html: this.state.translation }}
             className="translation-text"
           ></div>
-          {/* </Animated> */}
 
           <Button.Group vertical labeled icon>
             <Button
@@ -193,7 +189,13 @@ class Translate extends Component {
               value={phrase_id}
               onClick={data => this.props.createEntry(phrase_id)}
             />
-            <Button icon="cancel" content="Clear" basic color="red" disabled />
+            <Button
+              icon="cancel"
+              content="Clear"
+              basic
+              color="red"
+              onClick={this.clearPhrase}
+            />
           </Button.Group>
         </div>
         <Divider section />
@@ -208,6 +210,13 @@ class Translate extends Component {
   }
 }
 const mapstateToProps = state => {
-  return { ...state.user, ...state.active_phrasebook };
+  return { ...state.user, ...state.active_phrasebook, ...state.active_phrase };
 };
-export default connect(mapstateToProps)(Translate);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    set_active_phrase: data =>
+      dispatch({ type: "SET_ACTIVE_PHRASE", value: data })
+  };
+};
+export default connect(mapstateToProps, mapDispatchToProps)(Translate);
