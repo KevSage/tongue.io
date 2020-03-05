@@ -80,12 +80,13 @@ class EntryList extends Component {
     const { column, data, direction } = this.state;
 
     const workingPhrases = [];
+    // debugger;
     return (
       <div>
         <div>
           {this.props.active_phrasebook.entries &&
           this.props.active_phrasebook.entries.length > 0
-            ? this.props.active_phrasebook.phrases.map(phrase => (
+            ? this.props.active_phrasebook.entries.map(entry => (
                 <div className="entryDiv">
                   {" "}
                   <Popup
@@ -100,14 +101,14 @@ class EntryList extends Component {
                         onMouseEnter={e => this.hoverTranslate(e)}
                         // dangerouslySetInnerHTML={{ __html: phrase.input }}
                       >
-                        {phrase.input}
+                        {entry.phrase.input}
                         <Button
-                          onClick={phrase => this.props.delete_phrase(phrase)}
+                          onClick={entry => this.props.delete_entry(entry)}
                           color="red"
                           size="mini"
                           className="entryBtn"
-                          id={phrase.id}
-                          key={phrase.id}
+                          id={entry.id}
+                          name={entry.phrase.id}
                         >
                           Delete
                         </Button>
@@ -128,7 +129,7 @@ const mapstateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    delete_phrase: data => dispatch({ type: "DELETE_PHRASE", value: data })
+    delete_entry: data => dispatch({ type: "DELETE_ENTRY", value: data })
   };
 };
 export default connect(mapstateToProps, mapDispatchToProps)(EntryList);

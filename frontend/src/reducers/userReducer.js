@@ -91,27 +91,40 @@ export default (state = initialState, action) => {
         ...state,
         phrasebooks: newestArr
       };
-    case "DELETE_PHRASE":
+    case "DELETE_ENTRY":
       console.log(action.value);
-
-      fetch("http://localhost:3000/phrases/" + action.value.target.id, {
+      debugger;
+      fetch("http://localhost:3000/entries/" + action.value.target.id, {
         method: "DELETE"
       })
         .then(res => res.text())
         .then(data => {
           console.log(data);
         });
-      let newArray = state.active_phrasebook.phrases.filter(
-        phrase => phrase.id !== parseInt(action.value.target.id)
+      let newArray = state.active_phrasebook.entries.filter(
+        entry => entry.id !== parseInt(action.value.target.id)
       );
+      let newEntryTotal = state.entries.filter(
+        entry => entry.id !== parseInt(action.value.target.id)
+      );
+      // let newPhrasebookArray = state.phrasebooks.map(book => {
+      //   book.entries.filter(entry => entry.id !== parseInt(action.value.target.id)
+      //   );
+      // });
+
       console.log(state.active_phrasebook);
       console.log(newArray);
+      debugger;
       let new_obj = Object.assign({}, state.active_phrasebook);
-      new_obj.phrases = [...newArray];
+      new_obj.entries = [...newArray];
       console.log(new_obj);
+      // let newEntryTotal = state.entries;
+      debugger;
       return {
         ...state,
-        active_phrasebook: new_obj
+        active_phrasebook: new_obj,
+        entries: newEntryTotal
+        // phrasebooks: newPhrasebookArray
       };
 
     default:

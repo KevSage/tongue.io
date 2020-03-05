@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def decode
     @currentUser = User.find_by(id: current_user)
    render json: @currentUser, :include => {
-    :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language , :phrases, :entries]}  }
+    :nation => {:except => [:created_at]}, :phrasebooks => {:include => [:language , :phrases, :entries => {:include => [:phrase]}]}  }
   end
 
   # POST /users
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
     if @user.save!
 
-      render json: @user, :include => [:phrasebooks], status: :created, location: @user
+      render json: @user, :include => [:phrasebooks => {:include => [:entries => {:include => :phrases}] }], status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
