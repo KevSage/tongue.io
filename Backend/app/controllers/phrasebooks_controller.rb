@@ -6,12 +6,12 @@ class PhrasebooksController < ApplicationController
   def index
     @phrasebooks = Phrasebook.all
 
-    render json: @phrasebooks
+    render json: @phrasebooks, :include => {:language, :entries => {:include => [:phrase]}}
   end
 
   # GET /phrasebooks/1
   def show
-    render json: @phrasebook, :include => [:language, :entries]
+    render json: @phrasebook, :include => {:language, :entries => {:include => [:phrase]}}
   end
 
   # POST /phrasebooks
@@ -25,7 +25,7 @@ class PhrasebooksController < ApplicationController
 
     if @phrasebook.save
       
-      render json: @phrasebook, :include => [:entries, :language], status: :created, location: @phrasebook
+      render json: @phrasebook, :include => {:language, :entries => {:include => [:phrase]}}, status: :created, location: @phrasebook
     else
       render json: @phrasebook.errors, status: :unprocessable_entity
     end

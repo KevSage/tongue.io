@@ -80,7 +80,6 @@ class EntryList extends Component {
     const { column, data, direction } = this.state;
 
     const workingPhrases = [];
-    // debugger;
     return (
       <div>
         <div>

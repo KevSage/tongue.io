@@ -27,7 +27,7 @@ function UserInfo(props) {
               <Statistic>
                 <Statistic.Value text>
                   <Icon name="book" />{" "}
-                  {props.user.phrasebooks ? props.user.phrasebooks.length : 0}
+                  {props.phrasebooks ? props.phrasebooks.length : 0}
                 </Statistic.Value>
                 <Statistic.Label>Phrasebooks</Statistic.Label>
               </Statistic>

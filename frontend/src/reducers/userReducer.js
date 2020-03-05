@@ -107,10 +107,16 @@ export default (state = initialState, action) => {
       let newEntryTotal = state.entries.filter(
         entry => entry.id !== parseInt(action.value.target.id)
       );
-      // let newPhrasebookArray = state.phrasebooks.map(book => {
-      //   book.entries.filter(entry => entry.id !== parseInt(action.value.target.id)
-      //   );
-      // });
+      debugger;
+      let wim = [];
+
+      state.phrasebooks.map(book => {
+        wim.push(
+          book.entries.filter(
+            entry => entry.id !== parseInt(action.value.target.id)
+          )
+        );
+      });
 
       console.log(state.active_phrasebook);
       console.log(newArray);
@@ -123,8 +129,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         active_phrasebook: new_obj,
-        entries: newEntryTotal
-        // phrasebooks: newPhrasebookArray
+        entries: newEntryTotal,
+        phrasebooks: wim
       };
 
     default:

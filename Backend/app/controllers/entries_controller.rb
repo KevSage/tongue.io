@@ -21,7 +21,7 @@ class EntriesController < ApplicationController
       # newEntry = @entry.translate
       @phrasebooks = @entry.phrasebook.user.phrasebooks
       
-     #I need a way to return @ entry along with @phrasebooks to add to activephrasebook in the store
+
       render json: @phrasebooks, :include => [:entries, :language], status: :created, location: @entry
     else
       render json: @entry.errors, status: :unprocessable_entity
