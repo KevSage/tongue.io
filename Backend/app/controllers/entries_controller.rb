@@ -22,7 +22,7 @@ class EntriesController < ApplicationController
       @phrasebooks = @entry.phrasebook.user.phrasebooks
       
 
-      render json: @phrasebooks, :include => [:entries, :language], status: :created, location: @entry
+      render json: @phrasebooks, :include => [:language, :phrases, :entries => {:include => [:phrase]} ], status: :created, location: @entry
     else
       render json: @entry.errors, status: :unprocessable_entity
     end

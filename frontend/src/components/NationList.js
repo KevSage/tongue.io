@@ -28,9 +28,17 @@ class NationList extends Component {
   }
   filterNations = () => {
     let newFilter = [...this.state.nations];
-    return newFilter.filter(nation =>
-      nation.name.toLowerCase().includes(this.state.search.toLowerCase())
-    );
+
+    if (this.state.search !== "") {
+      newFilter = newFilter.filter(nation => {
+        return (
+          nation.name.toLowerCase().includes(this.state.search) ||
+          nation.language.name.toLowerCase().includes(this.state.search) ||
+          nation.region.toLowerCase().includes(this.state.search)
+        );
+      });
+    }
+    return newFilter;
   };
 
   handleSearch = searchterm => {
@@ -56,6 +64,8 @@ class NationList extends Component {
           <Search
             className="country-search"
             onSearchChange={(event, value) => this.handleSearch(value)}
+            results={this.filterNations()}
+            open={false}
           />
 
           <Card.Group>

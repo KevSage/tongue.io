@@ -77,13 +77,13 @@ class Dashboard extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        debugger;
         let newPhrasebooks = [...this.state.phrasebooks];
         this.setState({
           phrasebooks: data
         });
         this.props.save_entry(data);
         this.props.add_phrase();
+        this.forceUpdate();
       });
   };
   getTotalEntries = () => {

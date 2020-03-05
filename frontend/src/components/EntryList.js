@@ -3,18 +3,8 @@ import { Table, Icon, Button, Popup } from "semantic-ui-react";
 import { connect } from "react-redux";
 import _ from "lodash";
 
-const tableData = [
-  { phrase: "John", translation: 15, category: "Male" },
-  { phrase: "Amber", translation: 40, category: "Female" },
-  { phrase: "Leslie", translation: 25, category: "Other" },
-  { phrase: "Ben", translation: 70, category: "Male" }
-];
-
 class EntryList extends Component {
   state = {
-    // column: null,
-    // data: tableData,
-    // direction: null,
     hover: ""
   };
 
@@ -85,7 +75,7 @@ class EntryList extends Component {
         <div>
           {this.props.active_phrasebook.entries &&
           this.props.active_phrasebook.entries.length > 0
-            ? this.props.active_phrasebook.phrases.map(phrase => (
+            ? this.props.active_phrasebook.entries.map(entry => (
                 <div className="entryDiv">
                   {" "}
                   <Popup
@@ -93,21 +83,19 @@ class EntryList extends Component {
                     size="huge"
                     mouseEnterDelay={500}
                     content={this.state.hover}
-                    // dangerouslySetInnerHTML={{ __html: this.state.hover }}
                     trigger={
                       <p
                         className="entry"
                         onMouseEnter={e => this.hoverTranslate(e)}
-                        // dangerouslySetInnerHTML={{ __html: phrase.input }}
                       >
-                        {phrase.input}
+                        {entry.phrase.input}
                         <Button
-                          onClick={phrase => this.props.delete_phrase(phrase)}
+                          onClick={(e, entry) => this.props.delete_entry(entry)}
                           color="red"
                           size="mini"
                           className="entryBtn"
-                          id={phrase.id}
-                          key={phrase.id}
+                          id={entry.id}
+                          name={entry.phrase.id}
                         >
                           Delete
                         </Button>
@@ -128,7 +116,7 @@ const mapstateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    delete_phrase: data => dispatch({ type: "DELETE_PHRASE", value: data })
+    delete_entry: data => dispatch({ type: "DELETE_ENTRY", value: data })
   };
 };
 export default connect(mapstateToProps, mapDispatchToProps)(EntryList);

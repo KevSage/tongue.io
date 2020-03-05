@@ -54,7 +54,7 @@ function UserInfo(props) {
 // };
 
 const mapStateToProps = state => {
-  return { ...state.user, ...state.phrasebooks };
+  return { ...state.user, ...state.phrasebooks, ...state.entries };
 };
 
 // const mapDispatchToProps = state => {};

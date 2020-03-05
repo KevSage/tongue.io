@@ -138,16 +138,6 @@ class Translate extends Component {
     return (
       <Segment>
         <div>
-          <span>
-            Select a Category
-            <Dropdown
-              inline
-              options={categories}
-              className="categoryDropdown"
-              onChange={this.setCategory}
-              name="category"
-            />
-          </span>
           <Form>
             <Form.Group widths="equal">
               <Form.Input

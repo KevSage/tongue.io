@@ -57,7 +57,7 @@ class PhrasebookList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { ...state.user, ...state.phrasebooks };
+  return { ...state.user, ...state.phrasebooks, ...state.entries };
 };
 
 const mapDispatchToProps = dispatch => {
